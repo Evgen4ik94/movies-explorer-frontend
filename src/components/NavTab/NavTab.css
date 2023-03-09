@@ -1,0 +1,75 @@
+.NavTab {
+    max-width: 1280px;
+    display: flex;
+    flex-direction: row;
+    margin-left: auto;
+    margin-right: auto;
+    justify-content: space-between;
+}
+
+.NavTab__btn-text {
+    color: #000000;
+    font-style: normal;
+    display: flex;
+    min-width: 96px; 
+    align-items: center;
+    justify-content: center;
+    text-decoration:  none;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 16px
+}
+
+.NavTab__list {
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 22px;
+    display: grid;
+    grid-template-columns: repeat(3, 90px);
+    column-gap: 10px;
+}
+
+.NavTab__btn {
+    display: contents;
+    height: 36px;
+    width: 10px;
+    border: none;
+    padding: 0;
+    margin: 0;
+}
+
+.NavTab__link {
+    display: flex;
+    justify-content: center;
+    max-width: 90px;
+    height: 36px;
+    border-radius: 10px;
+    margin: 0;
+    background-color: #E8E8E8;
+    border: none;
+}
+
+.NavTab__link:hover {
+    background: #2BE080;
+    border-radius: 10px;
+}
+
+@media screen and (max-width: 321px) {
+    .NavTab__link {
+        max-width: 82px;
+        height: 26px;
+        border-radius: 6px;
+    }
+
+    .NavTab__list {
+        grid-template-columns: repeat(3, 82px);
+        column-gap: 6px;
+        margin-top: 212px;
+        margin-bottom: 17px
+    }
+
+    .NavTab__btn-text {
+        min-width: 82px; 
+        font-size: 10px
+    }
+}

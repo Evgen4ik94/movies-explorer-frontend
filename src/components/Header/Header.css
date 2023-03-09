@@ -1,0 +1,33 @@
+.header__container {
+  margin: 0 auto;
+  max-width: 1280px;
+  background-color: #FFF;
+}
+
+  .header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 18px;
+    margin-top: 18px;
+  }
+
+  .header__logo {
+    margin: 18px 8px 18px 70px;
+  } 
+  
+  .header__logo:hover {
+    rotate: 180deg;
+    transition: all .3s ease;
+  }
+  
+  .header__link:hover {
+    opacity: .7;
+  }
+  
+  
+  @media screen and (max-width: 768px) {
+    .header__logo {
+      margin: 18px 8px 18px 30px;
+    }
+  }
