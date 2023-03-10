@@ -1,10 +1,11 @@
 import './Navigation.css';
+
 import { Link, NavLink } from 'react-router-dom';
 import Hamburger from '../Hamburger/Hamburger.jsx';
 
-export default function Navigation({ authorized, isBurgerOpened, onClickBurger }) {
+export default function Navigation({ authorized, isBurgerMenuOpened, onClickBurgerMenu }) {
 
-  const activeLink = `navigation__link_active_${isBurgerOpened ? 'mobile' : 'desktop'}`
+  const activeLink = `navigation__link_active_${isBurgerMenuOpened ? 'mobile' : 'desktop'}`
 
   return (
     <>
@@ -18,10 +19,10 @@ export default function Navigation({ authorized, isBurgerOpened, onClickBurger }
               </Link>
         </nav>
       ) : (
-        <nav className={`navigation navigation_state_${isBurgerOpened ? 'opened' : 'closed'}`}>
-          <ul className={`navigation__list navigation__list_logged navigation__list_state_${isBurgerOpened ? 'opened' : 'closed'}`}>
-            {isBurgerOpened && (
-                <NavLink exact to="/" className="navigation__link" activeClassName={activeLink}>
+        <nav className={`navigation navigation_state_${isBurgerMenuOpened ? 'opened' : 'closed'}`}>
+          <ul className={`navigation__list navigation__list_logged navigation__list_state_${isBurgerMenuOpened ? 'opened' : 'closed'}`}>
+            {isBurgerMenuOpened && (
+                <NavLink exact to="/" className="navigation__link navigation__link_main" activeClassName={activeLink}>
                   Главная
                 </NavLink>
             )}
@@ -37,7 +38,7 @@ export default function Navigation({ authorized, isBurgerOpened, onClickBurger }
                 Аккаунт
               </NavLink>
           </ul>
-          <Hamburger isBurgerOpened={isBurgerOpened} onClickBurger={onClickBurger} />
+          <Hamburger isBurgerMenuOpened={isBurgerMenuOpened} onClickBurgerMenu={onClickBurgerMenu} />
         </nav>
       )}
     </>

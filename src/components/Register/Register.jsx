@@ -2,14 +2,13 @@ import './Register.css';
 import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import logo from '../../images/header_logo.svg';
-import useFormWithValidation from '../../hooks/useFormWithValidation.jsx';
+import useValidationForm from '../../hooks/useValidationForm.jsx';
 
 export default function Register() {
-  const { values, handleChange, resetForm, errors, isValid } = useFormWithValidation();
+  const { values, handleChangeForm, resetForm, errors, isValid } = useValidationForm();
 
-  function handleSubmit(e) {
+  function handleFormSubmit(e) {
     e.preventDefault();
-    // handleRegister(values);
   }
 
   useEffect(() => {
@@ -18,7 +17,7 @@ export default function Register() {
 
   return (
     <main className="register">
-      <form className="register__form" name="register" noValidate onSubmit={handleSubmit}>
+      <form className="register__form" name="register" noValidate onSubmit={handleFormSubmit}>
         <Link to="/" className="register__link">
           <img src={logo} alt="Логотип" className="register__logo" />
         </Link>
@@ -29,7 +28,7 @@ export default function Register() {
             <input
               name="name"
               className={`register__input ${errors.name && 'register__input_error'}`}
-              onChange={handleChange}
+              onChange={handleChangeForm}
               value={values.name || ''}
               type="text"
               required
@@ -43,7 +42,7 @@ export default function Register() {
             <input
               name="email"
               className={`register__input ${errors.email && 'register__input_error'}`}
-              onChange={handleChange}
+              onChange={handleChangeForm}
               value={values.email || ''}
               type="email"
               required
@@ -55,7 +54,7 @@ export default function Register() {
             <input
               name="password"
               className={`register__input ${errors.password && 'register__input_error'}`}
-              onChange={handleChange}
+              onChange={handleChangeForm}
               value={values.password || ''}
               type="password"
               required

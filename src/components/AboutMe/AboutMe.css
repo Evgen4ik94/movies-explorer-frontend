@@ -1,12 +1,12 @@
-.about-me {
+  .student {
+    width: 100%;
     background-color: #FFF;
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 100%;
   }
   
-  .about-me__container {
+  .student__container {
     color: #000;
     max-width: 1280px;
     width: 100%;
@@ -17,33 +17,33 @@
     flex-direction: column;
   }
   
-  .about-me__title {
+  .student__title {
+    width: 100%;
     margin: 0;
+    padding-bottom: 22px;
+    border-bottom: 1px solid #000;
     font-weight: 400;
     font-size: 22px;
     line-height: 1.23;
     letter-spacing: -0.04em;
-    border-bottom: 1px solid #000;
-    padding-bottom: 22px;
-    width: 100%;
     box-sizing: border-box;
   }
   
-  .about-me__bio-container {
-    display: flex;
-    justify-content: space-between;
+  .student__bio-container {
     width: 100%;
     margin-top: 66px;
+    display: flex;
+    justify-content: space-between;
     gap: 50px;
   }
   
-  .about-me__bio {
+  .student__bio {
+    max-width: 600px;
     display: flex;
     flex-direction: column;
-    max-width: 600px;
   }
   
-  .about-me__name {
+  .student__name {
     margin: 0;
     font-size: 50px;
     line-height: 1.16;
@@ -51,85 +51,87 @@
     letter-spacing: -0.04em;
   }
   
-  .about-me__age {
+  .student__age {
+    margin: 18px 0 0;
     font-weight: 500;
     font-size: 18px;
     line-height: 1.11;
-    margin: 18px 0 0;
   }
   
-  .about-me__text {
+  .student__text {
     margin: 26px 0 0;
     font-weight: 400;
     font-size: 14px;
     line-height: 1.57;
   }
   
-  .about-me__socials {
+  .student__socials {
     margin: 100px 0 0;
+    padding: 0;
     display: flex;
     gap: 20px;
     list-style: none;
-    padding: 0;
   }
   
-  .about-me__social-link {
+  .student__social-link {
+    color: #000;
     font-weight: 500;
     font-size: 14px;
     line-height: 1.21;
-    color: #000;
     text-decoration: none;
     transition: all .3s ease;
   }
   
-  .about-me__social-link:hover {
+  .student__social-link:hover {
     opacity: .7;
   }
   
-  .about-me__avatar {
+  .student__avatar {
     width: 270px;
     object-fit: cover;
     border-radius: 10px;
   }
   
   @media screen and (max-width: 800px) {
-    .about-me__container {
+
+    .student__container {
       padding: 92px 50px;
     }
   
-    .about-me__bio {
+    .student__bio {
       max-width: 384px;
     }
   
-    .about-me__name {
+    .student__name {
       font-size: 40px;
       line-height: 1;
     }
   
-    .about-me__age {
+    .student__age {
       font-size: 12px;
       line-height: 1.5;
       margin-top: 16px;
     }
   
-    .about-me__text {
+    .student__text {
       margin-top: 20px;
       font-weight: 400;
       font-size: 12px;
       line-height: 1.5;
     }
   
-    .about-me__socials {
+    .student__socials {
       margin-top: 87px;
     }
   
-    .about-me__avatar {
+    .student__avatar {
       width: 255px;
     }
   }
   
-  @media screen and (max-width: 650px) {
-    .about-me__bio-container {
+  @media screen and (max-width: 666px) {
+
+    .student__bio-container {
       display: flex;
       flex-direction: column-reverse;
       align-items: center;
@@ -137,39 +139,39 @@
       gap: 40px;
     }
   
-    .about-me__avatar {
+    .student__avatar {
       width: 292px;
     }
   }
   
   @media screen and (max-width: 400px) {
-    .about-me__container {
+    .student__container {
       padding: 71px 14px;
     }
   
-    .about-me__title {
+    .student__title {
       font-size: 18px;
       line-height: 1.22;
       padding-bottom: 28px;
     }
   
-    .about-me__name {
+    .student__name {
       font-size: 30px;
       line-height: 1.2;
     }
   
-    .about-me__age {
+    .student__age {
       font-size: 11px;
       line-height: 1.45;
       margin-top: 20px;
     }
   
-    .about-me__text {
+    .student__text {
       font-size: 11px;
       line-height: 1.45;
     }
   
-    .about-me__socials {
+    .student__socials {
       margin-top: 40px;
     }
   }

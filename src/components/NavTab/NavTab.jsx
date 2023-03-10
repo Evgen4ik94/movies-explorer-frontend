@@ -1,9 +1,9 @@
-import React from 'react';
-import NavBtn from '../NavBtn/NavBtn';
 import './NavTab.css';
 
+import React from 'react';
+import NavBtn from '../NavBtn/NavBtn';
 
-export default function NavTab() {
+function NavTab() {
 
     const titleLink = {
         id1: 'О проекте',
@@ -15,23 +15,25 @@ export default function NavTab() {
         <section className="NavTab">
             <section className= 'NavTab__list'>
                     <NavBtn
-                        to={"about-project"}
+                        to={"project"}
                         titleLink={titleLink.id1}
-                        iconStyle={'NavTab__btn'}
+                        btnStyle={'NavTab__btn'}
                         textStyle ={'NavTab__btn-text'}
                         navTabStyle={'NavTab__link'} 
                     />
                     <NavBtn 
                         to={"techs"}
                         titleLink = {titleLink.id2}
-                        iconStyle = {'NavTab__btn'} textStyle = {'NavTab__btn-text'}
+                        btnStyle = {'NavTab__btn'} 
+                        textStyle = {'NavTab__btn-text'}
                         navTabStyle = {'NavTab__link'}
                         className = "opacity"
                     /> 
                     <NavBtn 
-                        to={"about-me"}
+                        to={"student"}
                         titleLink = {titleLink.id3}
-                        iconStyle = {'NavTab__btn'} textStyle = {'NavTab__btn-text'}
+                        btnStyle = {'NavTab__btn'} 
+                        textStyle = {'NavTab__btn-text'}
                         navTabStyle = {'NavTab__link'} 
                     />      
                 </section>
@@ -39,3 +41,5 @@ export default function NavTab() {
         </section>
     );
 }
+
+export default NavTab;

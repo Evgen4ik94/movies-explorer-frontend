@@ -1,14 +1,14 @@
 import './MoviesCard.css';
+
 import { useState } from 'react';
 import { useLocation } from 'react-router-dom';
 
-export default function MoviesCard({ card }) {
+function MoviesCard({ card }) {
+  const [isCardAdded, setIsCardAdded] = useState(card.saved); // Стейт состояния карточки
   const location = useLocation();
 
-  const [isCardSaved, setIsCardSaved] = useState(card.saved);
-
-  const handleOnClick = () => {
-    setIsCardSaved(!isCardSaved);
+  const handleAddClick = () => {
+    setIsCardAdded(!isCardAdded);
   };
 
   return (
@@ -18,28 +18,17 @@ export default function MoviesCard({ card }) {
         <div className="movies-card__description">
           <h2 className="movies-card__title">{card.title}</h2>
           {location.pathname === '/movies' && (
-            <button
-              type="button"
-              className={`movies-card__button movies-card__button_type_${
-                !isCardSaved ? 'save' : 'saved'
-              }`}
-              onClick={handleOnClick}
-            ></button>
+            <button type="button" className={`movies-card__btn movies-card__btn_type_${!isCardAdded ? 'add' : 'added'}`} onClick={handleAddClick}></button>
           )}
           {location.pathname === "/saved-movies" && (
-            <button
-              type="button"
-              className="movies-card__button movies-card__button_type_unsave"
-            ></button>
+            <button type="button" className="movies-card__btn movies-card__btn_type_remove"></button>
           )}
         </div>
         <span className="movies-card__duration">{card.duration}</span>
-        <img
-          src={card.poster}
-          alt={card.title}
-          className="movies-card__poster"
-        />
+        <img src={card.poster} className="movies-card__poster" alt={card.title} />
       </article>
     </div>
   )
 }
+
+export default MoviesCard;

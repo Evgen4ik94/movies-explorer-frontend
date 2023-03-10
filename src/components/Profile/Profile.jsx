@@ -1,13 +1,13 @@
 import './Profile.css';
+
 import { useEffect } from 'react';
-import useFormWithValidation from '../../hooks/useFormWithValidation.jsx';
+import useValidationForm from '../../hooks/useValidationForm.jsx';
 
-export default function Profile() {
-  const { values, handleChange, resetForm, errors, isValid } = useFormWithValidation();
+function Profile() {
+  const { values, errors, isValid, handleChangeForm, resetForm } = useValidationForm();
 
-  function handleSubmit(e) {
+  function handleFormSubmit(e) {
     e.preventDefault();
-    // handleProfile(values);
   }
 
   useEffect(() => {
@@ -16,47 +16,45 @@ export default function Profile() {
 
   return (
     <main className="profile">
-      <form className="profile__form" name="profile" noValidate onSubmit={handleSubmit}>
-        <h1 className="profile__title">Привет, Евгений!</h1>
-        <div className="profile__labels-container">
-          <label className="profile__label">
-            <span className="profile__label-text">Имя</span>
+      <form className="profile__form" name="profile" noValidate onSubmit={handleFormSubmit}>
+        <h1 className="profile__greeting">Привет, Евгений!</h1>
+        <div className="profile__input-list">
+          <label className="profile__input">
+            <span className="profile__input-text">Имя</span>
             <input
               name="name"
-              className={`profile__input ${errors.name && 'profile__input_error'}`}
-              onChange={handleChange}
+              className={`profile__input-placeholder ${errors.name && 'profile__input_error'}`}
+              onChange={handleChangeForm}
               value={values.name || 'Евгений'}
               type="text"
               required
               minLength="2"
               maxLength="30"
             />
-            <span className="profile__error-name">{errors.name || ''}</span>
+            <span className="profile__input_error-name">{errors.name || ''}</span>
           </label>
-          <label className="profile__label">
-            <span className="profile__label-text">E-mail</span>
+          <label className="profile__input">
+            <span className="profile__input-text">E-mail</span>
             <input
               name="email"
-              className={`profile__input ${errors.email && 'profile__input_error'}`}
-              onChange={handleChange}
+              className={`profile__input-placeholder ${errors.email && 'profile__input_error'}`}
+              onChange={handleChangeForm}
               value={values.email || 'evgenymilyakov@yandex.ru'}
               type="email"
               required
             />
-            <span className="profile__error">{errors.email || ''}</span>
+            <span className="profile__input_error">{errors.email || ''}</span>
           </label>
         </div>
-        <div className="profile__button-container">
+        <div className="profile__btn-block">
           <button
             type="submit"
-            className={`profile__button-edit ${
-              !isValid && 'profile__button-edit_disabled'
-            }`}
+            className={`profile__btn-edit ${!isValid && 'profile__btn-edit_disabled'}`}
             disabled={!isValid}
           >
             Редактировать
           </button>
-          <button type="submit" className="profile__button-exit">
+          <button type="submit" className="profile__btn-exit">
             Выйти из аккаунта
           </button>
         </div>
@@ -64,3 +62,5 @@ export default function Profile() {
     </main>
   )
 }
+
+export default Profile;

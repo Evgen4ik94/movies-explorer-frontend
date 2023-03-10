@@ -75,27 +75,36 @@
   
   @media screen and (max-width: 768px) {
     .search__form {
-      width: 92.1875vw;
+      width: 70vw;
     }
     .search__input {
-      width: 49vw;
+      width: 44vw;
+    }
+    .search__button {
+      margin-right: 19px;
     }
   }
 
   @media screen and (max-width: 666px) {
+    .search {
+      flex-direction: column;
+    }
+    .search__form {
+      width: 92vw;
+      border-radius: 9px;
+    }
+    .search__input {
+      width: 66vw
+    }
     .vertical-line {
         display: none;
-        border-radius: 9px;
     }
   }
   
-  @media screen and (max-width: 400px) {
+  @media screen and (max-width: 468px) {
   
     .search__input {
-      text-align: left;
-      font-size: 18px;
-      line-height: 1.22;
-      padding-left: 0;
+      width: 55vw;
     }
   
     .search__button {

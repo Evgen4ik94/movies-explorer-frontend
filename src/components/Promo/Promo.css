@@ -1,28 +1,28 @@
-.promo {
-  max-width: 1200px;
-  width: 93.75vw;
-  padding-bottom: 0;
-  padding-top: 160px;
-  margin-left: auto;
-  margin-right: auto;
-  background-color: #f5f5f5;
-  border-radius: 10px;
-}
+  .promo {
+    max-width: 1200px;
+    width: 93.75vw;
+    padding-bottom: 0;
+    padding-top: 160px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #f5f5f5;
+    border-radius: 10px;
+  }
 
-  .promo__container {
+  .promo__block {
     margin: 0 40px;
     max-width: 1280px;
+    color: #000;
+    background-color: #F5F5F5;
     display: flex;
     justify-content: center;
     box-sizing: border-box;
-    color: #000;
-    background-color: #F5F5F5;
   }
 
-  .promo__about-project {
+  .promo__case {
+    max-width: 100%;
     display: flex;
     flex-direction: column;
-    max-width: 100%;
     gap: 151px;
     align-items: center;
   }
@@ -61,7 +61,7 @@
       text-align: center;
     }
 
-    .promo__about-project {
+    .promo__case {
       align-items: center;
       gap: 314px;
     }
@@ -80,7 +80,7 @@
       letter-spacing: -0.03em;
     }
 
-    .promo__about-project {
+    .promo__case {
       gap: 212px;
     }
   }

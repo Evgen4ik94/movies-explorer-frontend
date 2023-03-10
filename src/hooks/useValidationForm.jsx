@@ -1,11 +1,11 @@
 import { useState, useCallback } from 'react';
 
-export default function useFormWithValidation() {
+export default function useValidationForm() {
   const [values, setValues] = useState({});
   const [errors, setErrors] = useState({});
   const [isValid, setIsValid] = useState(false);
 
-  const handleChange = (e) => {
+  const handleChangeForm = (e) => {
     const input = e.target;
     const { value, name } = input;
     setValues({ ...values, [name]: value }); // универсальный обработчик полей
@@ -22,5 +22,5 @@ export default function useFormWithValidation() {
     [setValues, setErrors, setIsValid]
   );
 
-  return { values, handleChange, resetForm, errors, isValid };
+  return { values, handleChangeForm, resetForm, errors, isValid };
 }

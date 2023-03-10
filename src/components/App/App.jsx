@@ -4,25 +4,25 @@ import { useState, useEffect } from 'react';
 import { Route, Switch, useHistory } from 'react-router-dom';
 import Header from '../Header/Header';
 import Main from '../Main/Main.jsx';
-import Footer from '../Footer/Footer.jsx';
 import Movies from '../Movies/Movies.jsx';
-import SavedMovies from '../Movies/Movies.jsx';
+import AddedMovies from '../Movies/Movies.jsx';
+import Profile from '../Profile/Profile.jsx';
+import Footer from '../Footer/Footer.jsx';
 import Register from '../Register/Register.jsx';
 import Login from '../Login/Login.jsx';
-import Profile from '../Profile/Profile.jsx';
 import NotFound from '../NotFound/NotFound.jsx';
 
 export default function App() {
-  const history = useHistory();
-  const [isBurgerOpened, setIsBurgerOpened] = useState(false);
+  const [isBurgerMenuOpened, setIsBurgerMenuOpened] = useState(false);
   const [movies, setMovies] = useState([]);
-  const [savedMovies, setSavedMovies] = useState([]);
+  const [addedMovies, setAddedMovies] = useState([]);
+  const history = useHistory();
 
-  function onClickBurger(isBurgerOpened) {
-    setIsBurgerOpened(!isBurgerOpened);
+  function onClickBurgerMenu(isBurgerMenuOpened) {
+    setIsBurgerMenuOpened(!isBurgerMenuOpened);
   };
 
-  function goBack() {
+  function comeBack() {
     history.goBack();
   };
 
@@ -31,7 +31,7 @@ export default function App() {
   }, []);
 
   useEffect(() => {
-    setSavedMovies(moviesData.filter((movie) => {
+    setAddedMovies(moviesData.filter((movie) => {
       return movie.saved
     }))
   }, []);
@@ -40,18 +40,18 @@ export default function App() {
     <div className="app">
       <Switch>
         <Route path="/" exact>
-          <Header themeDark={false} authorized={false} onClickBurger={onClickBurger} isBurgerOpened={isBurgerOpened} />
+          <Header authorized={false} onClickBurgerMenu={onClickBurgerMenu} isBurgerMenuOpened={isBurgerMenuOpened} />
           <Main />
           <Footer />
         </Route>
         <Route path="/movies">
-          <Header themeDark={false} authorized={true} onClickBurger={onClickBurger} isBurgerOpened={isBurgerOpened} />
+          <Header authorized={true} onClickBurgerMenu={onClickBurgerMenu} isBurgerMenuOpened={isBurgerMenuOpened} />
           <Movies movies={movies} />
           <Footer />
         </Route>
         <Route exact path="/saved-movies">
-          <Header themeDark={false} authorized={true} onClickBurger={onClickBurger} isBurgerOpened={isBurgerOpened} />
-          <SavedMovies movies={savedMovies}/>
+          <Header authorized={true} onClickBurgerMenu={onClickBurgerMenu} isBurgerMenuOpened={isBurgerMenuOpened} />
+          <AddedMovies movies={addedMovies}/>
           <Footer />
         </Route>
         <Route exact path="/signup">
@@ -61,11 +61,11 @@ export default function App() {
           <Login />
         </Route>
         <Route exact path="/profile">
-          <Header themeDark={false} authorized={true} onClickBurger={onClickBurger} isBurgerOpened={isBurgerOpened} />
+          <Header authorized={true} onClickBurgerMenu={onClickBurgerMenu} isBurgerMenuOpened={isBurgerMenuOpened} />
           <Profile />
         </Route>
         <Route path="*">
-          <NotFound goBack={goBack} />
+          <NotFound goBack={comeBack} />
         </Route>
       </Switch>
     </div>

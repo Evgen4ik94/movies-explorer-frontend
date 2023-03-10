@@ -20,14 +20,14 @@
     align-items: center;
   }
   
-  .profile__title {
+  .profile__greeting {
     font-weight: 500;
     font-size: 24px;
     line-height: 1.21;
     margin: 0;
   }
   
-  .profile__labels-container {
+  .profile__input-list {
     display: flex;
     flex-direction: column;
     width: 100%;
@@ -35,7 +35,7 @@
     flex: 1;
   }
   
-  .profile__label {
+  .profile__input {
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -43,7 +43,7 @@
     position: relative;
   }
   
-  .profile__label-text {
+  .profile__input-text {
     font-weight: 500;
     font-size: 11px;
     line-height: 1.18;
@@ -51,7 +51,7 @@
     top: 16px;
   }
   
-  .profile__input {
+  .profile__input-placeholder {
     padding: 16px 0;
     box-sizing: border-box;
     border-style: none;
@@ -72,7 +72,7 @@
     border: none;
   }
   
-  .profile__error {
+  .profile__input_error {
     font-weight: 400;
     font-size: 10px;
     line-height: 1.2;
@@ -81,7 +81,7 @@
     top: 47px;
   }
   
-  .profile__error-name {
+  .profile__input_error-name {
     font-weight: 400;
     font-size: 10px;
     line-height: 1.2;
@@ -90,13 +90,13 @@
     top: -20px;
   }
   
-  .profile__button-container {
+  .profile__btn-block {
     display: flex;
     flex-direction: column;
     gap: 14px;
   }
   
-  .profile__button-edit {
+  .profile__btn-edit {
     margin-top: auto;
     border: none;
     background-color: transparent;
@@ -108,20 +108,20 @@
     cursor: pointer;
   }
   
-  .profile__button-edit:hover {
+  .profile__btn-edit:hover {
     opacity: 0.8;
   }
   
-  .profile__button-edit_disabled {
+  .profile__btn-edit_disabled {
     color: #8b8b8b;
     cursor: default;
   }
   
-  .profile__button-edit_disabled:hover {
+  .profile__btn-edit_disabled:hover {
     opacity: 1;
   }
   
-  .profile__button-exit {
+  .profile__btn-exit {
     border: none;
     font-weight: 500;
     font-size: 13px;
@@ -132,7 +132,7 @@
     cursor: pointer;
   }
   
-  .profile__button-exit:hover {
+  .profile__btn-exit:hover {
     opacity: 0.8;
   }
   
@@ -160,17 +160,17 @@
       gap: 65px;
     }
   
-    .profile__button-edit {
+    .profile__btn-edit {
       font-size: 12px;
       line-height: 1.25;
     }
   
-    .profile__button-exit {
+    .profile__btn-exit {
       font-size: 12px;
       line-height: 1.25;
     }
   
-    .profile__error-name {
+    .profile__input_error-name {
       top: -28px;
     }
   }

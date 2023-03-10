@@ -1,22 +1,23 @@
 import './MoviesCardList.css';
+
 import { useState, useEffect, useCallback } from 'react';
 import { useLocation } from 'react-router-dom';
+
 import MoviesCard from '../MoviesCard/MoviesCard.jsx';
 
 export default function MoviesCardList({ movies }) {
   const location = useLocation();
 
-  const [screenWidth, setScreenWidth] = useState(
-    document.documentElement.clientWidth
-  );
+  const [screenWidth, setScreenWidth] = useState(document.documentElement.clientWidth);
 
-  const handleResizeWidth = useCallback(() => {
+  //Ф-я изменения ширины экрана девайса
+  const handleResizeScreenWidth = useCallback(() => {
     setScreenWidth(document.documentElement.clientWidth);
   }, [setScreenWidth]);
 
   useEffect(() => {
-    window.addEventListener('resize', handleResizeWidth);
-  }, [handleResizeWidth]);
+    window.addEventListener('resize', handleResizeScreenWidth);
+  }, [handleResizeScreenWidth]);
 
   return (
     <>
@@ -25,8 +26,7 @@ export default function MoviesCardList({ movies }) {
             movies
               .slice(0, 12)
               .map((card) => <MoviesCard key={card._id} card={card} />)}
-          {screenWidth >= 584 &&
-            screenWidth < 918 &&
+          {screenWidth >= 584 && screenWidth < 918 &&
             movies
               .slice(0, 8)
               .map((card) => <MoviesCard key={card._id} card={card} />)}
@@ -35,7 +35,9 @@ export default function MoviesCardList({ movies }) {
               .slice(0, 5)
               .map((card) => <MoviesCard key={card._id} card={card} />)}
       </section>
-      <button className="movies-list__show-more">Ещё</button>
+      {location.pathname === "/movies" && (
+        <button className="movies-list__show-more">Ещё</button>
+      )}    
     </>
   )
 }

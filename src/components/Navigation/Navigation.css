@@ -36,6 +36,7 @@
 }
 
 .navigation__account {
+  padding: 8px 20px;
   align-self: center;
   background: #f9f9f9;
   border-radius: 20px;
@@ -45,11 +46,11 @@
   font-weight: 500;
   justify-items: end;
   line-height: 16px;
-  padding: 8px 20px;
   text-decoration: none;
 }
 
 .navigation__link {
+  margin-left: 16px;
   align-items: center;
   color: #000;
   display: flex;
@@ -57,8 +58,11 @@
   font-style: normal;
   font-weight: 400;
   line-height: 18px;
-  margin-left: 16px;
   text-decoration: none;
+}
+
+.navigation__link_main {
+  display: none;
 }
 
 .navigation__link:focus {
@@ -82,6 +86,8 @@
 }
 
 .navigation__link_landing {
+  margin-left: 10px;
+  padding: 8px 20px;
   align-items: center;
   color: #000;
   display: flex;
@@ -89,8 +95,6 @@
   font-style: normal;
   font-weight: 500;
   line-height: 16px;
-  margin-left: 10px;
-  padding: 8px 20px;
   text-decoration: none;
 }
 
@@ -103,20 +107,26 @@
   .navigation {
     justify-content: flex-end;
   }
+  
   .navigation__account {
-    display: none;
+    margin: 220px 0 0;
+    display: flex;
   }
 
   .navigation__list {
-    justify-content: flex-start;
     padding: 165px 0;
+    justify-content: flex-start;
   }
 
   .navigation__link {
+    margin-left: 0;
     font-weight: 500;
     font-size: 18px;
     line-height: 1.22;
-    margin-left: 0;
+  }
+
+  .navigation__link_main {
+    display: block;
   }
 
   .navigation__movies {
@@ -126,12 +136,12 @@
   }
 
   .navigation__list_logged {
+    width: 520px;
+    height: 100vh;
     gap: 36px;
     position: absolute;
     top:0;
     flex-direction: column;
-    height: 100vh;
-    width: 520px;
     background-color: #ffffff;
   }
 
@@ -183,13 +193,5 @@
   .navigation__list_logged {
     gap: 24px;
     width: 100%;
-  }
-
-  .navigation__item:first-child {
-    margin-top: 144px;
-  }
-
-  .navigation__item:last-child {
-    margin-bottom: 46px;
   }
 }

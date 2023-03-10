@@ -1,12 +1,12 @@
-.about-project {
+  .project {
+    width: 100%;
     background-color: #FFF;
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 100%;
   }
   
-  .about-project__container {
+  .project__container {
     max-width: 1280px;
     width: 100%;
     padding: 110px 70px;
@@ -17,34 +17,35 @@
     flex-direction: column;
   }
   
-  .about-project__title {
-    color: #000;
+  .project__title {
+    width: 100%;
     margin: 0;
+    padding-bottom: 23px;
+    color: #000;
+    border-bottom: 1px solid #000;
     font-weight: 400;
     font-size: 22px;
     line-height: 1.23;
     letter-spacing: -0.04em;
-    border-bottom: 1px solid #000;
-    padding-bottom: 23px;
-    width: 100%;
+
   }
   
-  .about-project__definition-list {
-    display: flex;
+  .project__definition-list {
     width: 100%;
-    list-style: none;
     margin: 0;
-    box-sizing: border-box;
     padding: 70px 0 97px;
-    gap: 40px;
     color: #000;
+    display: flex;
+    list-style: none;
+    box-sizing: border-box;
+    gap: 40px;
   }
   
-  .about-project__definition-item {
+  .project__definition-item {
     max-width: 550px;
   }
   
-  .about-project__definition-title {
+  .project__definition-title {
     margin: 0;
     font-weight: 400;
     font-size: 20px;
@@ -52,20 +53,20 @@
     letter-spacing: -0.04em;
   }
   
-  .about-project__definition-description {
+  .project__definition-description {
+    margin-top: 26px;
     font-weight: 400;
     font-size: 14px;
     line-height: 1.43;
-    margin-top: 26px;
   }
   
   
-  .about-project__scheme {
-    display: flex;
+  .project__scheme {
     width: 100%;
+    display: flex;
   }
   
-  .about-project__backend {
+  .project__back {
     display: flex;
     flex-direction: column;
     width: 20%;
@@ -73,7 +74,7 @@
     gap: 15px;
   }
   
-  .about-project__frontend {
+  .project__front {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -81,23 +82,23 @@
     flex-grow: 1;
   }
   
-  .about-project__backend-duration {
-    text-align: center;
+  .project__back-duration {
     width: 100%;
     padding: 9px 0;
+    color: #000;
+    background-color: #3DDC84;
+    text-align: center;
     box-sizing: border-box;
     font-weight: 400;
     font-size: 14px;
     line-height: 1.21;
-    color: #000;
-    background-color: #3DDC84;
   }
   
-  .about-project__frontend-duration {
-    text-align: center;
-    color: #000;
+  .project__front-duration {
     width: 100%;
     padding: 9px 0;
+    text-align: center;
+    color: #000;
     box-sizing: border-box;
     font-weight: 400;
     font-size: 14px;
@@ -105,7 +106,7 @@
     background-color: #F2F2F2;
   }
   
-  .about-project__scheme-title {
+  .project__scheme-title {
     font-weight: 500;
     font-size: 14px;
     line-height: 1.21;
@@ -113,91 +114,91 @@
   }
   
   @media screen and (max-width: 800px) {
-    .about-project__container {
+    .project__container {
       padding: 90px 50px;
     }
   
-    .about-project__definition-description {
+    .project__definition-description {
       font-size: 12px;
       line-height: 1.5;
       margin-top: 22px;
     }
   
-    .about-project__definition-item {
+    .project__definition-item {
       max-width: 319px;
     }
   
-    .about-project__definition-list {
+    .project__definition-list {
       padding-bottom: 81px;
       gap: 30px;
     }
   
-    .about-project__backend {
+    .project__back {
       width: 21%;
     }
   
-    .about-project__scheme-title {
+    .project__scheme-title {
       font-weight: 400;
     }
   }
   
   @media screen and (max-width: 400px) {
-    .about-project__container {
+    .project__container {
       padding: 71px 18px;
     }
   
-    .about-project__title {
+    .project__title {
       font-size: 18px;
       line-height: 1.22;
       letter-spacing: -0.04em;
       padding-bottom: 28px;
     }
   
-    .about-project__definition-list {
+    .project__definition-list {
       flex-direction: column;
       padding: 60px 0 48px;
       gap: 45px;
     }
   
-    .about-project__definition-item {
+    .project__definition-item {
       max-width: 284px;
     }
   
-    .about-project__definition-title {
+    .project__definition-title {
       font-size: 18px;
       line-height: 1.22;
     }
   
-    .about-project__definition-description {
+    .project__definition-description {
       font-size: 11px;
       line-height: 1.45;
       margin-top: 16px;
     }
   
-    .about-project__backend-duration {
+    .project__back-duration {
       font-size: 11px;
       line-height: 1.18;
       padding: 11px 0;
     }
   
-    .about-project__frontend-duration {
+    .project__front-duration {
       font-size: 11px;
       line-height: 1.18;
       padding: 11px 0;
     }
   
-    .about-project__scheme-title {
+    .project__scheme-title {
       font-weight: 400;
       font-size: 11px;
       line-height: 1.18;
     }
   
-    .about-project__backend {
+    .project__back {
       width: 35%;
       gap: 10px;
     }
   
-    .about-project__frontend {
+    .project__front {
       gap: 10px;
     }
   }
