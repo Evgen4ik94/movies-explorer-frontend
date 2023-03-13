@@ -56,4 +56,4 @@ Movies-explorer - это веб-приложение, позволяющее и�
 * Домен, по которуму доступно приложение [https://movies-flow.nomoredomains.rocks](https://movies-flow.nomoredomains.rocks);
 * Ссылка на индивидульный [макет](https://www.figma.com/file/35FQx1ZaoxeVlnB5PzTXdW/Diploma-(Copy)?node-id=932%3A2802&t=65Beh2roXiAf9ewI-0), по которому верстался проект. Альтернативная ссылка: (https://disk.yandex.ru/d/j9uTBtYCQoRewQ)
 * Ссылка на репозиторий Frontend части проекта [https://github.com/Evgen4ik94/movies-explorer-frontend](https://github.com/Evgen4ik94/movies-explorer-frontend);
-* Ссылка на пул-реквест фронтенд-части проекта 
+* Ссылка на пул-реквест фронтенд-части проекта [Pull-request] (https://github.com/Evgen4ik94/movies-explorer-frontend/pull/1)
