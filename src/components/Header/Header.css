@@ -1,10 +1,7 @@
-.header__container {
-  margin: 0 auto;
-  max-width: 1280px;
-  background-color: #FFF;
-}
-
   .header {
+    margin: 0 auto;
+    max-width: 1280px;
+    background-color: #FFF;
     display: flex;
     flex-direction: row;
     justify-content: space-between;

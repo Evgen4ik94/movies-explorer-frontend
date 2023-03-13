@@ -12,11 +12,14 @@ function MoviesCard({ card }) {
   };
 
   return (
-    <div className="movies-card">
+    <li className="movies-card">
       <article className="movies-card__item">
         
         <div className="movies-card__description">
-          <h2 className="movies-card__title">{card.title}</h2>
+          <div className='movies-card__header'>
+            <h2 className="movies-card__title">{card.title}</h2>
+            <span className="movies-card__duration">{card.duration}</span>
+          </div>
           {location.pathname === '/movies' && (
             <button type="button" className={`movies-card__btn movies-card__btn_type_${!isCardAdded ? 'add' : 'added'}`} onClick={handleAddClick}></button>
           )}
@@ -24,10 +27,9 @@ function MoviesCard({ card }) {
             <button type="button" className="movies-card__btn movies-card__btn_type_remove"></button>
           )}
         </div>
-        <span className="movies-card__duration">{card.duration}</span>
         <img src={card.poster} className="movies-card__poster" alt={card.title} />
       </article>
-    </div>
+    </li>
   )
 }
 

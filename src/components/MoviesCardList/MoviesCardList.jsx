@@ -21,7 +21,7 @@ function MoviesCardList({ moviesList }) {
 
   return (
     <>
-      <section className="movies-list">
+      <ul className="movies-list">
           {screenWidth > 917 &&
             moviesList
               .slice(0, 12)
@@ -34,7 +34,7 @@ function MoviesCardList({ moviesList }) {
             moviesList
               .slice(0, 5)
               .map((card) => <MoviesCard key={card._id} card={card} />)}
-      </section>
+      </ul>
       {location.pathname === "/movies" && (
         <button className="movies-list__show-more">Ещё</button>
       )}    
