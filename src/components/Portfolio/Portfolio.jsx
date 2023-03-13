@@ -8,13 +8,15 @@ function Portfolio() {
         <ul className="portfolio__projects">
           <li className="portfolio__project_item">
             <a
+              className="portfolio__project_link"
               href="https://github.com/Evgen4ik94/how-to-learn"
               target="_blank"
               rel="noreferrer"
-              className="portfolio__project_link"
             >
-              Статичный сайт
+              <p className='portfolio__project_title'>Статичный сайт</p>
+              <span className='portfolio__project_arrow'>↗</span>
             </a>
+            
           </li>
           <li className="portfolio__project_item">
             <a
@@ -23,7 +25,8 @@ function Portfolio() {
               rel="noreferrer"
               className="portfolio__project_link"
             >
-              Адаптивный сайт
+              <p className='portfolio__project_title'>Адаптивный сайт</p>
+              <span className='portfolio__project_arrow'>↗</span>
             </a>
           </li>
           <li className="portfolio__project_item">
@@ -33,7 +36,8 @@ function Portfolio() {
               rel="noreferrer"
               className="portfolio__project_link"
             >
-              Одностраничное веб-приложение
+              <p className='portfolio__project_title'>Одностраничное веб-приложение</p>
+              <span className='portfolio__project_arrow'>↗</span>
             </a>
           </li>
         </ul>

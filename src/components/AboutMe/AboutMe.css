@@ -84,6 +84,7 @@
   
   .student__social-link:hover {
     opacity: .7;
+    color: #3DDC84;
   }
   
   .student__avatar {
