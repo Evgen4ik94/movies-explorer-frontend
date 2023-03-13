@@ -51,7 +51,7 @@
 
 .NavTab__link:hover {
     background: #2BE080;
-    border-radius: 10px;
+    scale: 1.1;
 }
 
 @media screen and (max-width: 321px) {

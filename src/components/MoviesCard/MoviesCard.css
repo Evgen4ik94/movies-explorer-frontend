@@ -78,7 +78,7 @@
     background-image: url("../../images/save.svg");
   }
   
-  .movies-card__btn_type_addsed {
+  .movies-card__btn_type_added {
     background-image: url("../../images/save-active.svg");
     animation: heartbeat 0.2s ease-in 2;
   }

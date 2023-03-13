@@ -1,9 +1,9 @@
   .search {
     max-width: 1140px;
     width: 89vw;
+    margin: 70px auto 80px;
     display: flex;
     flex-direction: row;
-    margin: 70px auto 80px;
     border-radius: 9px;
   }
   
@@ -116,7 +116,7 @@
     }
   }
 
-  @media screen and (max-width: 321px) {
+  @media screen and (max-width: 320.5px) {
     .search__form {
       width: 93.75vw;
       margin-left: auto;

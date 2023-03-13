@@ -1,8 +1,8 @@
-.saved-movies {
+  .saved-movies {
+    width: 100%;
     background-color: #202020;
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 100%;
   }
   

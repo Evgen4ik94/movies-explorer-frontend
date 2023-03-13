@@ -5,7 +5,7 @@ import { useLocation } from 'react-router-dom';
 
 import MoviesCard from '../MoviesCard/MoviesCard.jsx';
 
-export default function MoviesCardList({ movies }) {
+function MoviesCardList({ moviesList }) {
   const location = useLocation();
 
   const [screenWidth, setScreenWidth] = useState(document.documentElement.clientWidth);
@@ -23,15 +23,15 @@ export default function MoviesCardList({ movies }) {
     <>
       <section className="movies-list">
           {screenWidth > 917 &&
-            movies
+            moviesList
               .slice(0, 12)
               .map((card) => <MoviesCard key={card._id} card={card} />)}
           {screenWidth >= 584 && screenWidth < 918 &&
-            movies
+            moviesList
               .slice(0, 8)
               .map((card) => <MoviesCard key={card._id} card={card} />)}
           {screenWidth < 584 &&
-            movies
+            moviesList
               .slice(0, 5)
               .map((card) => <MoviesCard key={card._id} card={card} />)}
       </section>
@@ -41,3 +41,5 @@ export default function MoviesCardList({ movies }) {
     </>
   )
 }
+
+export default MoviesCardList;

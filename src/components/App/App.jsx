@@ -14,7 +14,7 @@ import NotFound from '../NotFound/NotFound.jsx';
 
 export default function App() {
   const [isBurgerMenuOpened, setIsBurgerMenuOpened] = useState(false);
-  const [movies, setMovies] = useState([]);
+  const [moviesList, setMoviesList] = useState([]);
   const [addedMovies, setAddedMovies] = useState([]);
   const history = useHistory();
 
@@ -27,7 +27,7 @@ export default function App() {
   };
 
   useEffect(() => {
-    setMovies(moviesData);
+    setMoviesList(moviesData);
   }, []);
 
   useEffect(() => {
@@ -46,12 +46,12 @@ export default function App() {
         </Route>
         <Route path="/movies">
           <Header authorized={true} onClickBurgerMenu={onClickBurgerMenu} isBurgerMenuOpened={isBurgerMenuOpened} />
-          <Movies movies={movies} />
+          <Movies moviesList={moviesList} />
           <Footer />
         </Route>
         <Route exact path="/saved-movies">
           <Header authorized={true} onClickBurgerMenu={onClickBurgerMenu} isBurgerMenuOpened={isBurgerMenuOpened} />
-          <AddedMovies movies={addedMovies}/>
+          <AddedMovies moviesList={addedMovies}/>
           <Footer />
         </Route>
         <Route exact path="/signup">

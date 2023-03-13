@@ -17,21 +17,22 @@ export default function Login() {
   }, [resetForm]);
 
   return (
+
     <main className="login">
       <form className="login__form" name="login" noValidate onSubmit={handleFormSubmit}>
-        <Link to="/" className="login__link">
+        <Link to="/" className="login__link_logo">
           <img src={HeaderLogo} alt="Логотип" className="login__logo" />
         </Link>
-        <h1 className="login__title">Рады видеть!</h1>
+        <h1 className="login__greeting">Рады видеть!</h1>
         <div className="login__input-list">
           <label className="login__input">
             <span className="login__input-text">E-mail</span>
             <input
               name="email"
+              type="email"
               className={`login__input-placeholder ${errors.email && 'login__input_error'}`}
               onChange={handleChangeForm}
               value={values.email || ''}
-              type="email"
               required
             />
             <span className="login__input-error">{errors.email || ''}</span>
@@ -40,15 +41,16 @@ export default function Login() {
             <span className="login__input-text">Пароль</span>
             <input
               name="password"
+              type="password"
               className={`login__input-placeholder ${errors.password && 'login__input_error'}`}
               onChange={handleChangeForm}
               value={values.password || ''}
-              type="password"
               required
             />
             <span className="login__input-error">{errors.password || ''}</span>
           </label>
         </div>
+
         <button
           type="submit"
           className={`login__btn_submit ${ !isValid && 'login__btn_submit_disabled' }`}
@@ -56,6 +58,7 @@ export default function Login() {
         >
           Войти
         </button>
+
         <span className="login__help">
           Ещё не зарегистрированы?&nbsp;
           <Link to="signup" className="login__link">
