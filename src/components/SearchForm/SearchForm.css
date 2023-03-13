@@ -23,7 +23,18 @@
     font-weight: 400;
     line-height: 20px;
   }
-  
+
+  .search__input:focus-visible {
+    border-bottom: 1px solid #2BE080;
+    transition: 0,5;
+    outline: none;
+    transition: 0.55s ease-in-out;  
+  }
+
+  .search__input-placeholder:hover .search-icon  {
+    rotate: 45deg;
+  }
+
   .search__input::placeholder {
     color: #A0A0A0;
   }

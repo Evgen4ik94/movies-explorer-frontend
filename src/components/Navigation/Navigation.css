@@ -49,6 +49,12 @@
   text-decoration: none;
 }
 
+.navigation__account:hover {
+  background: #2BE080;
+  scale: 1.1;
+  transition: 0.55s ease-in-out;  
+}
+
 .navigation__link {
   margin-left: 16px;
   align-items: center;
@@ -69,8 +75,10 @@
   font-weight: 500;
 }
 
-.navigation__link:hover {
+.navigation__link:hover, .navigation__link_main:hover {
+  color: #2BE080;
   opacity: .7;
+  transition: 0.45s ease-in-out;  
 }
 
 .navigation__link_active_desktop {

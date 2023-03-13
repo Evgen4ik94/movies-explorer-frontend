@@ -17,6 +17,7 @@
     background-color: #FDFDFD;
     box-shadow: 0px 4px 30px rgba(0, 0, 0, 0.08);
     overflow: hidden;
+    transition: 10.5s;
   }
   
   .movies-card__item {
@@ -94,6 +95,7 @@
   
   .movies-card:hover .movies-card__btn_type_remove:hover {
     opacity: .8;
+    animation: heartbeat 0.2s ease-in 2;
   }
   
   @media screen and (max-width: 1200px) {
