@@ -6,22 +6,28 @@ import { Link } from 'react-router-dom';
 import HeaderLogo from '../../images/header_logo.svg';
 import useValidationForm from '../../hooks/useValidationForm.jsx';
 
-export default function Register() {
-  const { values, errors, isValid, handleChangeForm, resetForm } = useValidationForm();
+function Register({ handleRegister }) {
+  const { values, errors, isValid, handleChangeForm, resetFormInputs } = useValidationForm();
 
-  //Ручной сабмит
-  function handleFormSubmit(e) {
-    e.preventDefault();
+  //Ручной сабмит формы
+  function handleFormSubmit(evt) {
+    evt.preventDefault();
+    handleRegister(values);
   }
 
   useEffect(() => {
-    resetForm();
-  }, [resetForm]);
+    resetFormInputs();
+  }, [resetFormInputs]);
 
   return (
 
     <main className="register">
-      <form className="register__form" name="register" noValidate onSubmit={handleFormSubmit}>
+      <form 
+        className="register__form" 
+        name="register" 
+        onSubmit={handleFormSubmit} 
+        noValidate
+      >
         <Link to="/" className="register__link_logo">
           <img src={HeaderLogo} alt="Логотип" className="register__logo" />
         </Link>
@@ -32,9 +38,10 @@ export default function Register() {
             <input
               name="name"
               type="text"
+              pattern="^[A-Za-zА-Яа-яЁё /s -]+$"
               className={`register__input-placeholder ${errors.name && 'register__input_error'}`}
-              onChange={handleChangeForm}
               value={values.name || ''}
+              onChange={handleChangeForm}
               minLength="2"
               maxLength="30"
               required
@@ -43,18 +50,21 @@ export default function Register() {
           </label>
           <label className="register__input">
             <span className="register__input-text">E-mail</span>
+
             <input
               name="email"
               type="email"
               className={`register__input-placeholder ${errors.email && 'register__input_error'}`}
-              onChange={handleChangeForm}
               value={values.email || ''}
+              onChange={handleChangeForm}
               required
             />
+
             <span className="register__error-text">{errors.email || ''}</span>
           </label>
           <label className="register__input">
             <span className="register__input-text">Пароль</span>
+
             <input
               name="password"
               type="password"
@@ -64,9 +74,11 @@ export default function Register() {
               minLength="6"
               required
             />
+
             <span className="register__error-text">{errors.password || ''}</span>
           </label>
         </div>
+
         <button
           type="submit"
           className={`register__btn_submit ${!isValid && 'register__btn_submit_disabled'}`}
@@ -74,6 +86,7 @@ export default function Register() {
         >
           Зарегистрироваться
         </button>
+        
         <span className="register__help">
           Уже зарегистрированы?&nbsp;
           <Link to="signin" className="register__link">
@@ -84,3 +97,5 @@ export default function Register() {
     </main>
   )
 }
+
+export default Register;

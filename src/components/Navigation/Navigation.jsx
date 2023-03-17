@@ -3,13 +3,17 @@ import './Navigation.css';
 import { Link, NavLink } from 'react-router-dom';
 import Hamburger from '../Hamburger/Hamburger.jsx';
 
-export default function Navigation({ authorized, isBurgerMenuOpened, onClickBurgerMenu }) {
+function Navigation({ authorize, isBurgerMenuOpened, onClickBurgerMenu }) {
+  const activeLink = `navigation__link_active_${!isBurgerMenuOpened ? 'desktop' : 'mobile'}`
 
-  const activeLink = `navigation__link_active_${isBurgerMenuOpened ? 'mobile' : 'desktop'}`
+  function handleCloseByOverlay(evt) {
+    console.log('Done!')
+    evt.stopPropagation();
+  }
 
   return (
     <>
-      {!authorized ? (
+      {!authorize ? (
         <nav className="navigation">
               <Link to="/signup" className="navigation__link_landing">
                 Регистрация
@@ -19,24 +23,37 @@ export default function Navigation({ authorized, isBurgerMenuOpened, onClickBurg
               </Link>
         </nav>
       ) : (
-        <nav className={`navigation navigation_state_${isBurgerMenuOpened ? 'opened' : 'closed'}`}>
-          <ul className={`navigation__list navigation__list_logged navigation__list_state_${isBurgerMenuOpened ? 'opened' : 'closed'}`}>
-            {isBurgerMenuOpened && (
-                <NavLink exact to="/" className="navigation__link navigation__link_main" activeClassName={activeLink}>
-                  Главная
-                </NavLink>
-            )}
-            <div className='navigation__movies'>
-                <NavLink to="/movies" className="navigation__link" activeClassName={activeLink}>
-                  Фильмы
-                </NavLink>
-                <NavLink to="/saved-movies" className="navigation__link" activeClassName={activeLink}>
-                  Сохранённые фильмы
-                </NavLink>
-            </div>
-              <NavLink to="/profile" className="navigation__account" activeClassName={activeLink}>
-                Аккаунт
-              </NavLink>
+        <nav className={`navigation navigation_state_${!isBurgerMenuOpened ? 'closed' : 'opened'}`}>
+          <ul 
+            className={
+              `navigation__list navigation__list_logged navigation__list_state_${!isBurgerMenuOpened ? 'closed' : 'opened'}`
+            } 
+            onClick={handleCloseByOverlay}>
+
+              {isBurgerMenuOpened && (
+                <li className="navigation__item navigation__item_main">
+                  <NavLink exact to="/" className="navigation__link" activeClassName={activeLink}>
+                    Главная
+                  </NavLink>
+                </li>
+              )}
+              <div className='navigation__movies'>
+                <li className="navigation__item">
+                  <NavLink to="/movies" className="navigation__link" activeClassName={activeLink}>
+                    Фильмы
+                  </NavLink>
+                </li>
+                <li className="navigation__item">
+                  <NavLink to="/saved-movies" className="navigation__link" activeClassName={activeLink}>
+                    Сохранённые фильмы
+                  </NavLink>
+                </li>
+              </div>
+                <li className="navigation__item">
+                  <NavLink to="/profile" className="navigation__account" activeClassName={activeLink}>
+                    Аккаунт
+                  </NavLink>
+                </li>
           </ul>
           <Hamburger isBurgerMenuOpened={isBurgerMenuOpened} onClickBurgerMenu={onClickBurgerMenu} />
         </nav>
@@ -44,3 +61,5 @@ export default function Navigation({ authorized, isBurgerMenuOpened, onClickBurg
     </>
   );
 }
+
+export default Navigation;

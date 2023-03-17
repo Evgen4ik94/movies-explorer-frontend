@@ -21,7 +21,7 @@
   
   .hamburger-button:focus-visible {
     outline: 1px solid #000000;
-    outline-offset: 4px;
+    outline-offset: 5px;
     border-radius: 5px;
   }
   
@@ -44,6 +44,11 @@
   .hamburger-button_off > span::after {
     content: "";
     top: 10px;
+  }
+
+  .hamburger-button_off {
+    margin: auto 0;
+    top: 0;
   }
   
   .hamburger-button_on > span,

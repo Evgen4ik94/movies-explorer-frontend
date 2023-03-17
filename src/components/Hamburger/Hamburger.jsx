@@ -1,21 +1,24 @@
 import './Hamburger.css';
-import { useMediaQuery } from 'react-responsive';
+
 import { useEffect } from 'react';
+import { useMediaQuery } from 'react-responsive';
 
-export default function Hamburger({isBurgerMenuOpened, onClickBurgerMenu}) {
+function Hamburger({isBurgerMenuOpened, onClickBurgerMenu}) {
 
-  // контроль ширины экрана, для правильной логики работы классов и отображения меню
+  // Контроль правильности отображения меню
   const isMobile = useMediaQuery({ query: `(max-width: 1024px)` });
 
   const handleonClickBurgerMenu = () => {
-    onClickBurgerMenu(isBurgerMenuOpened);
+    onClickBurgerMenu();
   }
 
   useEffect(() => {
-    if (!isMobile) {
-      onClickBurgerMenu(true);
+    if (!isMobile && isBurgerMenuOpened) {
+      onClickBurgerMenu();
     }
-  }, [isMobile, onClickBurgerMenu]);
+  }, [isMobile, isBurgerMenuOpened, onClickBurgerMenu]);
+
+ 
 
   return (
     <button type="button" className={`hamburger-button hamburger-button_${isBurgerMenuOpened ? 'on': 'off'}`} onClick={handleonClickBurgerMenu}>
@@ -23,3 +26,5 @@ export default function Hamburger({isBurgerMenuOpened, onClickBurgerMenu}) {
     </button>
   )
 }
+
+export default Hamburger;

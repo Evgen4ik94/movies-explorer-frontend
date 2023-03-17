@@ -1,7 +1,8 @@
 import "./NotFound.css";
 
 
-export default function NotFound({ goBack }) {
+function NotFound({ goBack }) {
+
   return (
     <main className="not-found">
       <p className="not-found__block">
@@ -13,4 +14,7 @@ export default function NotFound({ goBack }) {
       </button>
     </main>
   )
+
 }
+
+export default NotFound;

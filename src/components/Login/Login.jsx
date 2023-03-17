@@ -1,27 +1,29 @@
 import './Login.css';
+
 import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import HeaderLogo from '../../images/header_logo.svg';
 import useValidationForm from '../../hooks/useValidationForm.jsx';
 
-export default function Login() {
-  const { values, handleChangeForm, resetForm, errors, isValid } = useValidationForm();
+function Login({ handleUserAuth }) {
+  const { values, handleChangeForm, resetFormInputs, errors, isValid } = useValidationForm();
 
   //Ручной сабмит формы
-  function handleFormSubmit(e) {
-    e.preventDefault();
+  function handleFormSubmit(evt) {
+    evt.preventDefault(values);
+    handleUserAuth(values);
   }
   // Сброс полей формы
   useEffect(() => {
-    resetForm();
-  }, [resetForm]);
+    resetFormInputs();
+  }, [resetFormInputs]);
 
   return (
 
     <main className="login">
-      <form className="login__form" name="login" noValidate onSubmit={handleFormSubmit}>
-        <Link to="/" className="login__link_logo">
-          <img src={HeaderLogo} alt="Логотип" className="login__logo" />
+      <form className="login__form" name="login" onSubmit={handleFormSubmit} noValidate>
+        <Link to="/" className="login__link_block">
+          <img src={HeaderLogo} alt="Логотип" className="login__link_logo" />
         </Link>
         <h1 className="login__greeting">Рады видеть!</h1>
         <div className="login__input-list">
@@ -69,3 +71,5 @@ export default function Login() {
     </main>
   )
 }
+
+export default Login;

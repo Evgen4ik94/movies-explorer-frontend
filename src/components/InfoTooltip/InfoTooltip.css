@@ -1,0 +1,103 @@
+  .info-tooltip {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, .3);
+    visibility: hidden;
+    opacity: 0;
+    cursor: pointer;
+    z-index: 100;
+    transition: all .3s linear;
+  }
+  
+  .info-tooltip_opened {
+    visibility: visible;
+    opacity: 1;
+  }
+  
+  .info-tooltip__block {
+    max-width: 430px;
+    width: 100%;
+    background-color: #3DDC84;
+    border-radius: 10px;
+    position: relative;
+    padding: 34px 36px 37px;
+    box-sizing: border-box;
+    box-shadow: 0 0 10px 10px #3DCC84;
+    cursor: default;
+  }
+  
+  .info-tooltip__status {
+    width: 120px;
+    height: 120px;
+    margin: 26px auto 32px;
+  }
+  
+  .info-tooltip__status_fail {
+    background-image: url(../../images/fail.svg);
+  }
+  
+  .info-tooltip__status_success {
+    background-image: url(../../images/success.svg);
+  }
+  
+  .info-tooltip__text {
+    margin: 0 0 24px;
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 1.208;
+    font-style: normal;
+    text-align: center;
+    white-space: pre-wrap
+  }
+  
+  .info-tooltip__btn_close {
+    width: 32px;
+    height: 32px;
+    padding: 0;
+    position: absolute;
+    top: -40px;
+    right: -40px;
+    border: none;
+    background-color: transparent;
+    background-image: url(../../images/close-button.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    opacity: 1;
+    transition: all .3s ease;
+  }
+  
+  .info-tooltip__btn_close:hover {
+    opacity: .8;
+    cursor: pointer;
+  }
+  
+  @media screen and (max-width: 500px) {
+    .info-tooltip__block {
+      max-width: 282px;
+      padding: 25px 22px;
+    }
+  
+    .info-tooltip__status {
+      margin: 25px auto 40px;
+    }
+  
+    .info-tooltip__text {
+      margin-bottom: 25px;
+      font-size: 20px;
+      line-height: 1.2;
+    }
+  
+    .info-tooltip__btn_close {
+      width: 20px;
+      height: 20px;
+      top: -38px;
+      right: 0;
+    }
+  }
+  

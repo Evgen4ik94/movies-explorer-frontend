@@ -1,10 +1,16 @@
-import "./FilterCheckbox.css";
+import './FilterCheckbox.css';
 
-export default function FilterCheckbox() {
+export default function FilterCheckbox({ shortMovies, handleShortMoviesCheck }) {
   return (
-    <div className="filter">
-      <input className="filter__checkbox" type="checkbox"></input>
-      <span className="filter__text">Короткометражки</span>
-    </div>
+    <label className="filter">
+        <input
+          className="filter__checkbox"
+          type="checkbox"
+          onChange={handleShortMoviesCheck}
+          defaultChecked={shortMovies ? true : false}
+        />
+        <span className="filter__tumbler"></span>
+        <span className="filter__text">Короткометражки</span>
+    </label>
   );
 }
