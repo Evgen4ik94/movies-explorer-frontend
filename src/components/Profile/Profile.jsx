@@ -75,7 +75,7 @@ function Profile({ handleEditProfile, handleSignOut }) {
                 Редактировать
               </button>
               <button 
-                type="submit" 
+                type="button" 
                 className="profile__btn-exit" 
                 onClick={handleSignOut}
               >

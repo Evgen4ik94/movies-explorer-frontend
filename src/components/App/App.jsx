@@ -57,39 +57,39 @@ export default function App() {
     setIsInfoTooltipOpen({ ...isInfoTooltipOpen, isOpen: false });
   }
 
-// Проверка токена, авторизация
-useEffect(() => {
-  const jwt = localStorage.getItem('jwt');
-  const path = location.pathname;
+  // Проверка токена, авторизация
+  useEffect(() => {
+    const jwt = localStorage.getItem('jwt');
+    const path = location.pathname;
 
-  if (jwt) {
-    setIsLoaderOn(true); //Вкл прелоадер
+    if (jwt) {
+      setIsLoaderOn(true); //Вкл прелоадер
 
-    MainApi
-      .getUserData()
-      .then(data => {
-        if (data) {
-          setAuthorize(true);
-          setCurrentUser(data);
-          history.push(path);
-        }
-      })
-      .catch(err =>
-        setIsInfoTooltipOpen({
-          isOpen: true,
-          successful: false,
-          text: err,
+      MainApi
+        .getUserData()
+        .then(data => {
+          if (data) {
+            setAuthorize(true);
+            setCurrentUser(data);
+            history.push(path);
+          }
         })
-      )
-      .finally(() => {
-        setIsLoaderOn(false); //Выкл прелоадер после загрузки данных
-        setLoading(true);
-      });
-  } else {
-    setLoading(true);
-  }
-  // eslint-disable-next-line
-}, []);
+        .catch(err =>
+          setIsInfoTooltipOpen({
+            isOpen: true,
+            successful: false,
+            text: err,
+          })
+        )
+        .finally(() => {
+          setIsLoaderOn(false); //Выкл прелоадер после загрузки данных
+          setLoading(true);
+        });
+    } else {
+      setLoading(true);
+    }
+    // eslint-disable-next-line
+  }, []);
 
   // Получение списка добавленных фильмов
   useEffect(() => {
@@ -354,10 +354,7 @@ useEffect(() => {
                     <Footer />
                   </Route>
                   <Preloader isOpen={isLoaderOn} />
-                  <InfoTooltip
-                    status={isInfoTooltipOpen}
-                    onClose={closeInfoTooltip}
-                  />
+                  <InfoTooltip status={isInfoTooltipOpen} onClose={closeInfoTooltip} />
                 </CurrentUserContext.Provider>
               )
       }

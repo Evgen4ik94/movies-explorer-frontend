@@ -1,7 +1,7 @@
 import './Register.css';
 
-import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { useEffect } from 'react';
 
 import HeaderLogo from '../../images/header_logo.svg';
 import useValidationForm from '../../hooks/useValidationForm.jsx';

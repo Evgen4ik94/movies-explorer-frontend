@@ -7,7 +7,6 @@ function Navigation({ authorize, isBurgerMenuOpened, onClickBurgerMenu }) {
   const activeLink = `navigation__link_active_${!isBurgerMenuOpened ? 'desktop' : 'mobile'}`
 
   function handleCloseByOverlay(evt) {
-    console.log('Done!')
     evt.stopPropagation();
   }
 

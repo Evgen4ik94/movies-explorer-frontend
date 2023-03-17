@@ -21,10 +21,10 @@ export default function useValidationForm() {
     }
 
     if (name === 'email') {
-      if (!isEmail(value)) {
-          input.setCustomValidity('Введен некорректый адрес электронной почты.');
+      if (isEmail(value)) {
+        input.setCustomValidity('');
       } else {
-          input.setCustomValidity('');
+          input.setCustomValidity('Введен некорректый адрес электронной почты.');
       }
     }
   };

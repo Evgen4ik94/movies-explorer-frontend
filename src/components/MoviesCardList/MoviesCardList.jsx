@@ -71,7 +71,7 @@ function MoviesCardList({ moviesList, addedMoviesList, onAddClick, onRemoveClick
           }
       </ul>
       {location.pathname === "/movies" && (
-        <button className="movies-list__show-more" onClick={handleClickShowMore}>Ещё</button>
+        <button type='button' className="movies-list__show-more" onClick={handleClickShowMore}>Ещё</button>
       )}    
     </>
   )

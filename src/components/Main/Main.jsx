@@ -7,7 +7,7 @@ import Techs from '../Techs/Techs.jsx';
 import AboutMe from '../AboutMe/AboutMe.jsx';
 import Portfolio from '../Portfolio/Portfolio.jsx';
 
-export default function Main() {
+function Main() {
   return (
     <main className="main">
       <Promo>
@@ -20,3 +20,6 @@ export default function Main() {
     </main>
   );
 }
+
+
+export default Main;
