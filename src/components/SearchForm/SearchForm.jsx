@@ -39,10 +39,10 @@ function SearchForm({ handleSearchFormSubmit, handleShortMoviesCheck, shortMovie
   return (
 
     <section className="search">
-      <form 
-        name="search" 
-        className="search__form" 
-        onSubmit={handleFormSubmit} 
+      <form
+        name="search"
+        className="search__form"
+        onSubmit={handleFormSubmit}
         noValidate
       >
         <div className="search__input-placeholder">
@@ -62,9 +62,9 @@ function SearchForm({ handleSearchFormSubmit, handleShortMoviesCheck, shortMovie
         <button className="search__btn" type="submit"></button>
         <h2 className="vertical-line"></h2>
       </form>
-      <FilterCheckbox 
-        shortMoviesList={shortMoviesList} 
-        handleShortMoviesCheck={handleShortMoviesCheck} 
+      <FilterCheckbox
+        shortMoviesList={shortMoviesList}
+        handleShortMoviesCheck={handleShortMoviesCheck}
         onChange={handleShortMoviesCheck} />
     </section>
 

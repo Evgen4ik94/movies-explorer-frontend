@@ -22,10 +22,10 @@ function Register({ handleRegister }) {
   return (
 
     <main className="register">
-      <form 
-        className="register__form" 
-        name="register" 
-        onSubmit={handleFormSubmit} 
+      <form
+        className="register__form"
+        name="register"
+        onSubmit={handleFormSubmit}
         noValidate
       >
         <Link to="/" className="register__link_logo">
@@ -86,7 +86,7 @@ function Register({ handleRegister }) {
         >
           Зарегистрироваться
         </button>
-        
+
         <span className="register__help">
           Уже зарегистрированы?&nbsp;
           <Link to="signin" className="register__link">

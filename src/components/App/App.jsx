@@ -129,7 +129,7 @@ export default function App() {
               text: err,
             })
         )
-        .finally(() => 
+        .finally(() =>
           setIsLoaderOn(false)
         );
     }
@@ -139,7 +139,7 @@ export default function App() {
   // Функция авторизации через апи
   function handleUserAuth({ email, password }) {
     setIsLoaderOn(true); //Вкл прелоадер
-    
+
     MainApi
       .login(email, password)
       .then(jwt => {
@@ -168,7 +168,7 @@ export default function App() {
           text: err,
         })
       )
-      .finally(() => 
+      .finally(() =>
         setIsLoaderOn(false) //Выкл прелоадер после загрузки данных
       );
   }
@@ -176,7 +176,7 @@ export default function App() {
   // Функция регистрации через апи
   function handleUserReg({ name, email, password }) {
     setIsLoaderOn(true); //Вкл прелоадер
-    
+
     MainApi
       .register(name, email, password)
       .then(data => {
@@ -191,7 +191,7 @@ export default function App() {
           text: err,
         })
       )
-      .finally(() => 
+      .finally(() =>
         setIsLoaderOn(false) //Выкл прелоадер после загрузки данных
       );
   }
@@ -224,7 +224,7 @@ export default function App() {
           text: err,
         })
       )
-      .finally(() => 
+      .finally(() =>
         setIsLoaderOn(false) //Выкл прелоадер после загрузки данных
       );
   }
