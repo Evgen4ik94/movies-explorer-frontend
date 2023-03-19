@@ -181,7 +181,7 @@ export default function App() {
       .register(name, email, password)
       .then(data => {
         if (data._id) {
-          Login({ email, password });
+          handleUserAuth({ email, password });
         }
       })
       .catch(err =>

@@ -18,7 +18,8 @@ class Api {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ email, password }),
-    }).then(res => this._getResponseData(res));
+    })
+    .then(res => this._getResponseData(res));
   }
 
   // Регистрация нового пользователя
@@ -31,7 +32,8 @@ class Api {
         email,
         password,
       }),
-    }).then(res => this._getResponseData(res));
+    })
+    .then(res => this._getResponseData(res));
   }
 
   // Получение данных пользователя
@@ -40,7 +42,8 @@ class Api {
       headers: {
         authorization: `Bearer ${localStorage.getItem('jwt')}`,
       },
-    }).then(res => this._getResponseData(res));
+    })
+    .then(res => this._getResponseData(res));
   }
 
   // Изменение данных пользователя
@@ -52,7 +55,8 @@ class Api {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({ name, email }),
-    }).then(res => this._getResponseData(res));
+    })
+    .then(res => this._getResponseData(res));
   }
 
   // Добавление фильма в список сохраненных
@@ -76,7 +80,8 @@ class Api {
         nameRU: data.nameRU,
         nameEN: data.nameEN,
       }),
-    }).then(res => this._getResponseData(res));
+    })
+    .then(res => this._getResponseData(res));
   }
 
   // Удаление фильма из списка сохраненных
@@ -86,7 +91,8 @@ class Api {
       headers: {
         authorization: `Bearer ${localStorage.getItem('jwt')}`,
       },
-    }).then(res => this._getResponseData(res));
+    })
+    .then(res => this._getResponseData(res));
   }
 
   // Получение списка сохраненных фильмов
@@ -95,10 +101,11 @@ class Api {
       headers: {
         authorization: `Bearer ${localStorage.getItem('jwt')}`,
       },
-    }).then(res => this._getResponseData(res));
+    })
+    .then(res => this._getResponseData(res));
   }
 
-  
+
 }
 
 // Экземпляр класса
