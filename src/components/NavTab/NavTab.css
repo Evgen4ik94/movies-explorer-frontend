@@ -11,7 +11,7 @@
     color: #000000;
     font-style: normal;
     display: flex;
-    min-width: 96px; 
+    min-width: 96px;
     align-items: center;
     justify-content: center;
     text-decoration:  none;
@@ -47,6 +47,7 @@
     margin: 0;
     background-color: #E8E8E8;
     border: none;
+    transition: 0.55s ease-in-out;
 }
 
 .NavTab__link:hover {
@@ -69,7 +70,7 @@
     }
 
     .NavTab__btn-text {
-        min-width: 82px; 
+        min-width: 82px;
         font-size: 10px
     }
 }

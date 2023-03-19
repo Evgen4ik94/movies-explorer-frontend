@@ -17,6 +17,7 @@ import Login from '../Login/Login.jsx';
 import NotFound from '../NotFound/NotFound.jsx';
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute.jsx';
 import InfoTooltip from '../InfoTooltip/InfoTooltip.jsx';
+import { PHRASES } from '../../utils/constants';
 import Preloader from '../Preloader/Preloader.jsx';
 
 
@@ -37,6 +38,8 @@ export default function App() {
 
   const headerEndpoints = ['/movies', '/saved-movies', '/profile', '/'];
   const footerEndpoints = ['/movies', '/saved-movies', '/'];
+
+  const {greeting, update, goodbye} = PHRASES;
 
   const history = useHistory();
   const location = useLocation();
@@ -149,13 +152,13 @@ export default function App() {
           setIsInfoTooltipOpen({
             isOpen: true,
             successful: true,
-            text: 'Добро пожаловать!',
+            text: greeting,
           });
           setTimeout(() => {
             setIsInfoTooltipOpen({ // Автоматическое закрытие ранее открытого попапа
               isOpen: false,
               successful: true,
-              text: 'Добро пожаловать!',
+              text: greeting,
             })
           }, 2000);
           history.push('/movies');
@@ -207,13 +210,13 @@ export default function App() {
         setIsInfoTooltipOpen({
           isOpen: true,
           successful: true,
-          text: 'Данные успешно обновлены!',
+          text: update,
         });
         setTimeout(() => {
           setIsInfoTooltipOpen({ // Автоматическое закрытие ранее открытого попапа
             isOpen: false,
             successful: true,
-            text: 'Добро пожаловать!',
+            text: greeting,
           })
         }, 2000);
       })
@@ -237,13 +240,13 @@ export default function App() {
     setIsInfoTooltipOpen({  // Открытие "прощального" попапа
       isOpen: true,
       successful: true,
-      text: 'До свидания!',
+      text: goodbye,
     });
     setTimeout(() => {
       setIsInfoTooltipOpen({ // Автоматическое закрытие ранее открытого попапа
         isOpen: false,
         successful: true,
-        text: 'До свидания!',
+        text: goodbye,
       })
     }, 2000);
     history.push('/');

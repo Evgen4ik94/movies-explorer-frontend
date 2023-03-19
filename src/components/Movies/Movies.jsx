@@ -10,7 +10,7 @@ import CurrentUserContext from '../../contexts/CurrentUserContext.jsx';
 
 function Movies({setIsLoaderOn, setIsInfoTooltipOpen, addedMoviesList,onRemoveClick, onAddClick}) {
   const currentUser = useContext(CurrentUserContext); // Подключаем контекст
-  
+
   const [isAllMoviesList, setIsAllMoviesList] = useState([]); // Список всех фильмов на сервере
   const [queryMovies, setQueryMovies] = useState([]); // Список фильмов по запросу
 
@@ -55,7 +55,7 @@ function Movies({setIsLoaderOn, setIsInfoTooltipOpen, addedMoviesList,onRemoveCl
               shortMoviesCheck
             );
           })
-          .catch(() => 
+          .catch(() =>
             setIsInfoTooltipOpen({
               isOpen: true,
               successful: false,

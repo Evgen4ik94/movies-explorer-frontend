@@ -18,10 +18,14 @@ function Hamburger({isBurgerMenuOpened, onClickBurgerMenu}) {
     }
   }, [isMobile, isBurgerMenuOpened, onClickBurgerMenu]);
 
- 
+
 
   return (
-    <button type="button" className={`hamburger-button hamburger-button_${isBurgerMenuOpened ? 'on': 'off'}`} onClick={handleonClickBurgerMenu}>
+    <button
+      type="button"
+      className={`hamburger-button hamburger-button_${isBurgerMenuOpened ? 'on': 'off'}`}
+      onClick={handleonClickBurgerMenu}
+    >
       <span></span>
     </button>
   )

@@ -5,4 +5,8 @@
     flex-direction: column;
     align-items: center;
   }
-  
+
+    .movies__separate {
+    margin-bottom: 70px;
+    border: 1px solid #e8e8e8;
+  }

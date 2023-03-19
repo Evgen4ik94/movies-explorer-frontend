@@ -52,7 +52,7 @@
 .navigation__account:hover {
   background: #2BE080;
   scale: 1.1;
-  transition: 0.55s ease-in-out;  
+  transition: 0.55s ease-in-out;
 }
 
 .navigation__link {
@@ -82,7 +82,7 @@
 
 .navigation__link:hover, .navigation__link_main:hover {
   opacity: .7;
-  transition: 0.45s ease-in-out;  
+  transition: 0.45s ease-in-out;
 }
 
 .navigation__link_active_desktop {
@@ -120,7 +120,7 @@
   .navigation {
     justify-content: flex-end;
   }
-  
+
   .navigation__account {
     margin: 220px 0 0;
     display: flex;

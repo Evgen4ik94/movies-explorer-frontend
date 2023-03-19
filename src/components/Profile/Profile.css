@@ -72,15 +72,11 @@
       border-bottom: 1px solid #3ddc84;
     }
 
-    .profile__input:focus:invalid {
+    .profile__input-placeholder:focus:invalid {
       color: #ee3465;
       text-align: center;
       border-bottom: 1px solid #ee3465;
     }
-
-  .profile__input_error {
-    color: #ee3465;
-  }
 
   .profile__input_error {
     font-weight: 400;

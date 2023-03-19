@@ -4,6 +4,12 @@ const BEATFILM_URL = 'https://api.nomoreparties.co/beatfilm-movies';
 
 const SHORTFILM_DURATION = 40;
 
+const PHRASES = {
+  greeting: 'Добро пожаловать',
+  update: 'Данные успешно обновлены!',
+  goodbye: 'До свидания!'
+}
+
 const GADJETS_WIDTH = {
     desktop: {
       width: 1000,
@@ -20,7 +26,7 @@ const GADJETS_WIDTH = {
         more: 2,
       },
     },
-  
+
     mobile: {
       width: 583,
       cards: {
@@ -30,4 +36,4 @@ const GADJETS_WIDTH = {
     },
 };
 
-export { API_URL, BEATFILM_URL, SHORTFILM_DURATION, GADJETS_WIDTH };
+export { API_URL, BEATFILM_URL, SHORTFILM_DURATION, PHRASES, GADJETS_WIDTH };

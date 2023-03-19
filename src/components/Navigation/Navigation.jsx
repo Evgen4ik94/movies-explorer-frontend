@@ -8,27 +8,31 @@ function Navigation({ authorize, isBurgerMenuOpened, onClickBurgerMenu }) {
 
   function handleCloseByOverlay(evt) {
     evt.stopPropagation();
+    console.log('Done!')
   }
 
   return (
     <>
       {!authorize ? (
         <nav className="navigation">
-              <Link to="/signup" className="navigation__link_landing">
-                Регистрация
-              </Link>
-              <Link to="/signin" className="navigation__link_landing">
-                Войти
-              </Link>
+              <ul className="navigation__list">
+                <li className="navigation__item">
+                  <Link to="/signup" className="navigation__link_landing">
+                    Регистрация
+                  </Link>
+                </li>
+                <li className="navigation__item">
+                  <Link to="/signin" className="navigation__link_landing">
+                    Войти
+                  </Link>
+                </li>
+              </ul>
         </nav>
       ) : (
         <nav className={`navigation navigation_state_${!isBurgerMenuOpened ? 'closed' : 'opened'}`}>
-          <ul 
-            className={
-              `navigation__list navigation__list_logged navigation__list_state_${!isBurgerMenuOpened ? 'closed' : 'opened'}`
-            } 
+          <ul
+            className={ `navigation__list navigation__list_logged navigation__list_state_${!isBurgerMenuOpened ? 'closed' : 'opened'}`}
             onClick={handleCloseByOverlay}>
-
               {isBurgerMenuOpened && (
                 <li className="navigation__item navigation__item_main">
                   <NavLink exact to="/" className="navigation__link" activeClassName={activeLink}>

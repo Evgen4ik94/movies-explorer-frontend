@@ -25,10 +25,10 @@ function MoviesCardList({ moviesList, addedMoviesList, onAddClick, onRemoveClick
     if (location.pathname === '/movies') {
       if (widthScreen <= desktop.width && widthScreen > mobile.width) {
         setShowedCards(tablet.cards);
-      } 
+      }
         else if (widthScreen > desktop.width) {
         setShowedCards(desktop.cards);
-      } 
+      }
         else {
         setShowedCards(mobile.cards);
       }
@@ -72,7 +72,7 @@ function MoviesCardList({ moviesList, addedMoviesList, onAddClick, onRemoveClick
       </ul>
       {location.pathname === "/movies" && (
         <button type='button' className="movies-list__show-more" onClick={handleClickShowMore}>Ещё</button>
-      )}    
+      )}
     </>
   )
 }
