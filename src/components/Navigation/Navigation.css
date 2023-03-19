@@ -72,7 +72,7 @@
   transition: all 0.3s ease-in-out;
 }
 
-.navigation__item_main {
+.navigation__list_item_main {
   display: none;
 }
 
@@ -138,7 +138,7 @@
     line-height: 1.22;
   }
 
-  .navigation__item_main {
+  .navigation__list_item_main {
     display: block;
   }
 
@@ -189,7 +189,7 @@
     margin-right: 30px;
     cursor: pointer;
   }
-  .navigation__item:last-child {
+  .navigation__list_item:last-child {
     margin: auto 0 90px 0
   }
 
