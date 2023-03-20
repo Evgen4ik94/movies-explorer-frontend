@@ -151,7 +151,7 @@ export default function App() {
     })
   }
 
-  function successPopup(text) {
+  function successPopupOpen(text) {
     setIsInfoTooltipOpen({
       isOpen: true,
       successful: true,
@@ -189,7 +189,7 @@ export default function App() {
         if (jwt.token) {
           localStorage.setItem('jwt', jwt.token);
           setAuthorize(true);
-          successPopup(greeting);
+          successPopupOpen(greeting);
           popupAutoClose(greeting);
           history.push('/movies');
         }
@@ -229,7 +229,7 @@ export default function App() {
       .updateUserData(name, email)
       .then(newUserData => {
         setCurrentUser(newUserData);
-        successPopup(update);
+        successPopupOpen(update);
         popupAutoClose(update);
       })
       .catch(err =>
@@ -245,7 +245,7 @@ export default function App() {
     setCurrentUser({});
     setAuthorize(false);
     localStorage.clear();
-    successPopup(goodbye);
+    successPopupOpen(goodbye);
     popupAutoClose(goodbye);
     history.push('/');
   }
