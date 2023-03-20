@@ -47,8 +47,8 @@ function MoviesCardList({ moviesList, addedMoviesList, onAddClick, onRemoveClick
   // увеличение кол-ва отображаемых фильмов по клику на кнопку "Ещё"
   function handleClickShowMore() {
     const start = renderMoviesList.length;
-    const end = start + showedCards.more;
     const added = moviesList.length - start;
+    const end = start + showedCards.more;
 
     if (added > 0) {
       const moreCards = moviesList.slice(start, end);
@@ -62,16 +62,16 @@ function MoviesCardList({ moviesList, addedMoviesList, onAddClick, onRemoveClick
           { renderMoviesList.map(movie => (
             <MoviesCard
               key={movie.id || movie._id}
+              movie={movie}
               added={getAddedMoviesCards(addedMoviesList, movie)}
               onAddClick={onAddClick}
               onRemoveClick={onRemoveClick}
-              movie={movie}
             />
             ))
           }
       </ul>
       {location.pathname === "/movies" && (
-        <button type='button' className="movies-list__show-more" onClick={handleClickShowMore}>Ещё</button>
+        <button type='button' className="movies-list__btn_show-more" onClick={handleClickShowMore}>Ещё</button>
       )}
     </>
   )

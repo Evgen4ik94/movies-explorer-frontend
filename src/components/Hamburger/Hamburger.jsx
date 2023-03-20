@@ -12,6 +12,7 @@ function Hamburger({isBurgerMenuOpened, onClickBurgerMenu}) {
     onClickBurgerMenu();
   }
 
+  // Закрытие бургерного меню автоматически при изменении ширины экрана
   useEffect(() => {
     if (!isMobile && isBurgerMenuOpened) {
       onClickBurgerMenu();
@@ -23,7 +24,7 @@ function Hamburger({isBurgerMenuOpened, onClickBurgerMenu}) {
   return (
     <button
       type="button"
-      className={`hamburger-button hamburger-button_${isBurgerMenuOpened ? 'on': 'off'}`}
+      className={`hamburger-btn hamburger-btn_${isBurgerMenuOpened ? 'on': 'off'}`}
       onClick={handleonClickBurgerMenu}
     >
       <span></span>

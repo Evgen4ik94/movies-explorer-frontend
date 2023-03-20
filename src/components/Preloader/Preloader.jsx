@@ -7,7 +7,7 @@ function Preloader({ isOpen }) {
           isOpen && (
             <div className="preloader">
               <div className="preloader__block">
-                <span className="preloader__round"></span>
+                <span className="preloader__rotate-circle"></span>
               </div>
             </div>
           )

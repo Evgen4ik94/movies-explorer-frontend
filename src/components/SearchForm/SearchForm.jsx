@@ -2,6 +2,7 @@ import "./SearchForm.css";
 
 import { useState, useEffect, useContext } from 'react';
 import { useLocation } from 'react-router-dom';
+import { PHRASES } from "../../utils/constants";
 
 import FilterCheckbox from "../FilterCheckbox/FilterCheckbox.jsx";
 import CurrentUserContext from '../../contexts/CurrentUserContext.jsx';
@@ -9,32 +10,35 @@ import useValidationForm from "../../hooks/useValidationForm";
 
 function SearchForm({ handleSearchFormSubmit, handleShortMoviesCheck, shortMoviesList }) {
   const location = useLocation();
-
+  const {search_error} = PHRASES;
   const currentUser = useContext(CurrentUserContext); // Подключаем контекст
-
-  const { values, handleChangeForm, isValid, setIsValid } = useValidationForm();
-
   const [errorRes, setErrorRes] = useState('');
+  const { values, handleChangeForm, isValid, setIsValid, resetFormInputs } = useValidationForm();
+
+// Стираем сообщение об ошибке валидации
+useEffect(() => {
+  setErrorRes('')
+}, [isValid]);
+
+// Локальное состояние поля ввода формы
+useEffect(() => {
+  if (localStorage.getItem(`${currentUser.email} - movieSearch`) && location.pathname === '/movies') {
+      const inputValue = localStorage.getItem(`${currentUser.email} - movieSearch`);
+      values.search = inputValue;
+      setIsValid(true);
+  }
+   // eslint-disable-next-line
+}, [currentUser]);
 
   function handleFormSubmit(evt) {
     evt.preventDefault();
-    return isValid ? handleSearchFormSubmit(values.search) : setErrorRes('Нужно ввести ключевое слово.');
+    return isValid ? handleSearchFormSubmit(values.search) : setErrorRes(search_error);
   };
 
-  // Стираем сообщение об ошибке валидации
-  useEffect(() => {
-    setErrorRes('')
-  }, [isValid]);
-
-  // Локальное состояние поля ввода формы
-  useEffect(() => {
-    if (localStorage.getItem(`${currentUser.email} - movieSearch`) && location.pathname === '/movies') {
-        const inputValue = localStorage.getItem(`${currentUser.email} - movieSearch`);
-        values.search = inputValue;
-        setIsValid(true);
-    }
-     // eslint-disable-next-line
-  }, [currentUser]);
+// Сброс полей формы
+useEffect(() => {
+  resetFormInputs();
+}, [resetFormInputs]);
 
   return (
 

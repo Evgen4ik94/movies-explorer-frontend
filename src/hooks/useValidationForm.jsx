@@ -10,9 +10,6 @@ export default function useValidationForm() {
   const handleChangeForm = (evt) => {
     const input = evt.target;
     const { value, name } = input;
-    setValues({ ...values, [name]: value }); // Обработка полей
-    setErrors({ ...errors, [name]: input.validationMessage }); // Обработка ошибок
-    setIsValid(input.closest('form').checkValidity()); // Проверка полей на валидность
 
     if (name === 'name' && input.validity.patternMismatch) {
       input.setCustomValidity('Имя может содержать только латиницу, кириллицу, пробел или дефис.')
@@ -27,7 +24,13 @@ export default function useValidationForm() {
           input.setCustomValidity('Введен некорректый адрес электронной почты.');
       }
     }
+
+    setValues({ ...values, [name]: value }); // Обработка полей
+    setErrors({ ...errors, [name]: input.validationMessage }); // Обработка ошибок
+    setIsValid(input.closest('form').checkValidity()); // Проверка полей на валидность
   };
+
+  
 
   // Функция для сброса полей формы, ошибок
   const resetFormInputs = useCallback(

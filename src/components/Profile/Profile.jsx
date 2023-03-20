@@ -9,17 +9,18 @@ function Profile({ handleEditProfile, handleSignOut }) {
 
   const { values, errors, isValid, handleChangeForm, resetFormInputs } = useValidationForm();
 
-  //Ручной сабмит формы
-  function handleFormSubmit(e) {
-    e.preventDefault();
-    handleEditProfile(values);
-  }
-
+  // Загрузка данных юзера
   useEffect(() => {
     if (currentUser) {
       resetFormInputs(currentUser, {}, true);
     }
   }, [currentUser, resetFormInputs]);
+
+  //Ручной сабмит формы редактирования профиля
+  function handleFormSubmit(evt) {
+    evt.preventDefault();
+    handleEditProfile(values);
+  }
 
   const inputValidity = (!isValid || (currentUser.name === values.name && currentUser.email === values.email));
 

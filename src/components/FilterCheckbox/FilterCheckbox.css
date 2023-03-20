@@ -42,11 +42,11 @@
   line-height: 1.29;
 }
 
-.filter__tumbler {
-  position: absolute;
-  background-color: #fff;
+.filter__btn {
   width: 16px;
   height: 16px;
+  position: absolute;
+  background-color: #fff;
   box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.08);
   border-radius: 10px;
   left: 2px;
@@ -54,7 +54,7 @@
   transition: all .3s ease;
 }
 
-.filter__checkbox:checked + .filter__tumbler {
+.filter__checkbox:checked + .filter__btn {
   left: 18px;
 }
 
@@ -83,8 +83,8 @@
 
 @media screen and (max-width: 400px) {
   .filter {
-    margin-top: 42px;
     width: 148px;
+    margin-top: 42px;
   }
 
   .filter__text {

@@ -7,8 +7,10 @@ import MoviesCardList from '../MoviesCardList/MoviesCardList.jsx';
 import SearchForm from '../SearchForm/SearchForm.jsx';
 import moviesApi from '../../utils/MoviesApi.js';
 import CurrentUserContext from '../../contexts/CurrentUserContext.jsx';
+import { PHRASES } from '../../utils/constants';
 
 function Movies({setIsLoaderOn, setIsInfoTooltipOpen, addedMoviesList,onRemoveClick, onAddClick}) {
+  
   const currentUser = useContext(CurrentUserContext); // Подключаем контекст
 
   const [isAllMoviesList, setIsAllMoviesList] = useState([]); // Список всех фильмов на сервере
@@ -18,6 +20,30 @@ function Movies({setIsLoaderOn, setIsInfoTooltipOpen, addedMoviesList,onRemoveCl
   const [filteredMoviesList, setFilteredMoviesList] = useState([]); // Фильмы, отображаемые по запросу и отфильтрованные чекбоксом
 
   const [NotFound, setNotFound] = useState(false); // Если фильмы по запросу не найдены
+  const {notfound, server_error} = PHRASES;
+
+  // Проверка состояния чекбокса в хранилище
+  useEffect(() => {
+    (localStorage.getItem(`${currentUser.email} - shortMovies`) === 'true') ? setShortMoviesCheck(true) : setShortMoviesCheck(false)
+    }
+    , [currentUser]);
+
+  // Отображение фильмов из хранилища
+  useEffect(() => {
+      if (localStorage.getItem(`${currentUser.email} - movies`)) {
+      const moviesList = JSON.parse(localStorage.getItem(`${currentUser.email} - movies`)
+      );
+      setQueryMovies(moviesList);
+
+      if (
+        localStorage.getItem(`${currentUser.email} - shortMovies`) === 'true'
+      ) {
+        setFilteredMoviesList(sortShortMovies(moviesList));
+      } else {
+        setFilteredMoviesList(moviesList);
+      }
+    }
+  }, [currentUser]);
 
 
   // Поиск фильмов по базе
@@ -27,24 +53,25 @@ function Movies({setIsLoaderOn, setIsInfoTooltipOpen, addedMoviesList,onRemoveCl
       setIsInfoTooltipOpen({
         isOpen: true,
         successful: false,
-        text: 'Фильмы по Вашему запросу не найдены.\n Введите другое название.',
+        text: notfound,
       });
       setNotFound(true);
     } else {
       setNotFound(false);
     }
     setQueryMovies(movies);
-    setFilteredMoviesList(shortMoviesCheckbox ? sortShortMovies(movies) : movies);
+    setFilteredMoviesList(!shortMoviesCheckbox ? movies : sortShortMovies(movies));
     localStorage.setItem(`${currentUser.email} - movies`, JSON.stringify(movies));
   }
 
   // Поиск фильмов по запросу
   function handleSearchFormSubmit(inputValue) {
-    localStorage.setItem(`${currentUser.email} - movieSearch`, inputValue);
     localStorage.setItem(`${currentUser.email} - shortMovies`, shortMoviesCheck);
+    localStorage.setItem(`${currentUser.email} - movieSearch`, inputValue);
 
     if (isAllMoviesList.length === 0) {
-        setIsLoaderOn(true);
+        setIsLoaderOn(true); //Вкл прелоадер
+        // Запрашиваем список фильмов из апи
         moviesApi
           .getMoviesData()
           .then(moviesList => {
@@ -59,12 +86,12 @@ function Movies({setIsLoaderOn, setIsInfoTooltipOpen, addedMoviesList,onRemoveCl
             setIsInfoTooltipOpen({
               isOpen: true,
               successful: false,
-              text: 'На сервере произошла ошибка. Подождите немного и попробуйте ещё раз.',
+              text: server_error,
             })
           )
-          .finally(() => setIsLoaderOn(false));
+          .finally(() => setIsLoaderOn(false)); //Выкл прелоадер
         } else {
-        handleSetMoviesList(isAllMoviesList, inputValue, shortMoviesCheck);
+                handleSetMoviesList(isAllMoviesList, inputValue, shortMoviesCheck);
       }
     }
 
@@ -78,32 +105,6 @@ function Movies({setIsLoaderOn, setIsInfoTooltipOpen, addedMoviesList,onRemoveCl
     }
     localStorage.setItem(`${currentUser.email} - shortMovies`, !shortMoviesCheck);
   }
-
-  // Проверка состояния чекбокса в хранилище
-  useEffect(() => {
-    if (localStorage.getItem(`${currentUser.email} - shortMovies`) === 'true') {
-      setShortMoviesCheck(true);
-    } else {
-      setShortMoviesCheck(false);
-    }
-  }, [currentUser]);
-
-  // Отображение фильмов из хранилища
-  useEffect(() => {
-    if (localStorage.getItem(`${currentUser.email} - movies`)) {
-      const moviesList = JSON.parse(
-        localStorage.getItem(`${currentUser.email} - movies`)
-      );
-      setQueryMovies(moviesList);
-      if (
-        localStorage.getItem(`${currentUser.email} - shortMovies`) === 'true'
-      ) {
-        setFilteredMoviesList(sortShortMovies(moviesList));
-      } else {
-        setFilteredMoviesList(moviesList);
-      }
-    }
-  }, [currentUser]);
 
   return (
     <main className="movies">

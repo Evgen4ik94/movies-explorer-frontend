@@ -1,22 +1,21 @@
 import { useEffect } from 'react';
 
-function usePressEsc(callback, dependency) {
+//Функция, осуществляющая закрытие по нажатию на Esc
+function usePressEsc(callback, dependence) {
   useEffect(() => {
-    if (dependency) {
-      const closeOnEsc = evt => {
+    if (dependence) {
+      function closeOnEsc (evt) {
         if (evt.key === 'Escape') {
-          callback()
+          callback() // Колбэк функция, вызываемая при нажатии на Esc
         }
       }
-      // Добавим обработчик
+      // Добавим обработчик 
         document.addEventListener('keyup', closeOnEsc);
       // Удаляем обработчик
-        return () => {
-        document.removeEventListener('keyup', closeOnEsc)
-      };
+      return () => { document.removeEventListener('keyup', closeOnEsc)};
     }
   // eslint-disable-next-line
-  }, [dependency])
+  }, [dependence])
 }
 
 export default usePressEsc;

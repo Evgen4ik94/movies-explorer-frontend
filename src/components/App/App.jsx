@@ -2,6 +2,7 @@ import './App.css';
 
 import { useState, useEffect } from 'react';
 import { Route, Switch, Redirect, useHistory, useLocation } from 'react-router-dom';
+import { PHRASES } from '../../utils/constants';
 
 import Header from '../Header/Header';
 import Main from '../Main/Main.jsx';
@@ -17,7 +18,6 @@ import Login from '../Login/Login.jsx';
 import NotFound from '../NotFound/NotFound.jsx';
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute.jsx';
 import InfoTooltip from '../InfoTooltip/InfoTooltip.jsx';
-import { PHRASES } from '../../utils/constants';
 import Preloader from '../Preloader/Preloader.jsx';
 
 
@@ -44,22 +44,7 @@ export default function App() {
   const history = useHistory();
   const location = useLocation();
 
-  // Переход назад со страницы с ошибкой 404
-  function comeBack() {
-    history.goBack();
-  }
-
-  function onClickBurgerMenu() {
-    setIsBurgerMenuOpened(!isBurgerMenuOpened);
-  };
-
-  usePressEsc(onClickBurgerMenu, isBurgerMenuOpened);
-
-  // Функция для закрытия попапа с информацией
-  function closeInfoTooltip() {
-    setIsInfoTooltipOpen({ ...isInfoTooltipOpen, isOpen: false });
-  }
-
+  /*------ USE EFFECTS ------*/
   // Проверка токена, авторизация
   useEffect(() => {
     const jwt = localStorage.getItem('jwt');
@@ -138,7 +123,62 @@ export default function App() {
     }
   }, [authorize]);
 
+  /*------ USE EFFECTS END ------*/
+  
 
+  /*------ NOT FOUND ------*/
+  // Переход назад со страницы с ошибкой 404
+  function comeBack() {
+    history.goBack();
+  }
+  /*------ NOT FOUND END------*/
+
+
+  /*--- BURGER MENU and POPUP ---*/
+  // Открытие бургерного меню
+  function onClickBurgerMenu() {
+    setIsBurgerMenuOpened(!isBurgerMenuOpened);
+  };
+
+  // Закрытие бургерного меню кликом на Esc
+  usePressEsc(onClickBurgerMenu, isBurgerMenuOpened);
+
+  function errorPopup(text) {
+    setIsInfoTooltipOpen({
+      isOpen: true,
+      successful: false,
+      text: text,
+    })
+  }
+
+  function successPopup(text) {
+    setIsInfoTooltipOpen({
+      isOpen: true,
+      successful: true,
+      text: text,
+    })
+  }
+  
+  // Функция для закрытия попапа с информацией
+  function handleClosePopup() {
+    setIsInfoTooltipOpen({ ...isInfoTooltipOpen, isOpen: false });
+  }
+
+  // Автоматическое закрытие ранее открытого попапа по таймеру
+  function popupAutoClose(text) {
+    setTimeout(() => {
+    setIsInfoTooltipOpen({ 
+      isOpen: false,
+      successful: true,
+      text: text,
+    })
+    }, 2000);
+  }
+  
+  /*--- BURGER MENU and POPUP END---*/
+
+
+  /*------ FUNCTIONS ------*/
   // Функция авторизации через апи
   function handleUserAuth({ email, password }) {
     setIsLoaderOn(true); //Вкл прелоадер
@@ -149,27 +189,13 @@ export default function App() {
         if (jwt.token) {
           localStorage.setItem('jwt', jwt.token);
           setAuthorize(true);
-          setIsInfoTooltipOpen({
-            isOpen: true,
-            successful: true,
-            text: greeting,
-          });
-          setTimeout(() => {
-            setIsInfoTooltipOpen({ // Автоматическое закрытие ранее открытого попапа
-              isOpen: false,
-              successful: true,
-              text: greeting,
-            })
-          }, 2000);
+          successPopup(greeting);
+          popupAutoClose(greeting);
           history.push('/movies');
         }
       })
       .catch(err =>
-        setIsInfoTooltipOpen({
-          isOpen: true,
-          successful: false,
-          text: err,
-        })
+        errorPopup(err)
       )
       .finally(() =>
         setIsLoaderOn(false) //Выкл прелоадер после загрузки данных
@@ -188,11 +214,7 @@ export default function App() {
         }
       })
       .catch(err =>
-        setIsInfoTooltipOpen({
-          isOpen: true,
-          successful: false,
-          text: err,
-        })
+        errorPopup(err)
       )
       .finally(() =>
         setIsLoaderOn(false) //Выкл прелоадер после загрузки данных
@@ -207,25 +229,11 @@ export default function App() {
       .updateUserData(name, email)
       .then(newUserData => {
         setCurrentUser(newUserData);
-        setIsInfoTooltipOpen({
-          isOpen: true,
-          successful: true,
-          text: update,
-        });
-        setTimeout(() => {
-          setIsInfoTooltipOpen({ // Автоматическое закрытие ранее открытого попапа
-            isOpen: false,
-            successful: true,
-            text: greeting,
-          })
-        }, 2000);
+        successPopup(update);
+        popupAutoClose(update);
       })
       .catch(err =>
-        setIsInfoTooltipOpen({
-          isOpen: true,
-          successful: false,
-          text: err,
-        })
+        errorPopup(err)
       )
       .finally(() =>
         setIsLoaderOn(false) //Выкл прелоадер после загрузки данных
@@ -237,18 +245,8 @@ export default function App() {
     setCurrentUser({});
     setAuthorize(false);
     localStorage.clear();
-    setIsInfoTooltipOpen({  // Открытие "прощального" попапа
-      isOpen: true,
-      successful: true,
-      text: goodbye,
-    });
-    setTimeout(() => {
-      setIsInfoTooltipOpen({ // Автоматическое закрытие ранее открытого попапа
-        isOpen: false,
-        successful: true,
-        text: goodbye,
-      })
-    }, 2000);
+    successPopup(goodbye);
+    popupAutoClose(goodbye);
     history.push('/');
   }
 
@@ -258,11 +256,7 @@ export default function App() {
       .addMovieCard(movieCard)
       .then(newMovieCard => setAddedMoviesList([newMovieCard, ...addedMoviesList]))
       .catch(err =>
-        setIsInfoTooltipOpen({
-          isOpen: true,
-          successful: false,
-          text: err,
-        })
+        errorPopup(err)
       );
   }
 
@@ -284,13 +278,10 @@ export default function App() {
         setAddedMoviesList(newMoviesList);
       })
       .catch(err =>
-        setIsInfoTooltipOpen({
-          isOpen: true,
-          successful: false,
-          text: err,
-        })
+        errorPopup(err)
       );
   }
+  /*------ FUNCTIONS END------*/
 
   return (
 
@@ -312,7 +303,7 @@ export default function App() {
                     </Route>
                     <Route exact path='/signup'>
                       {!authorize ? (
-                        <Register handleRegister={handleUserReg} />
+                        <Register handleUserReg={handleUserReg} />
                           ) : (
                                 <Redirect to='/' />
                               )}
@@ -357,7 +348,7 @@ export default function App() {
                     <Footer />
                   </Route>
                   <Preloader isOpen={isLoaderOn} />
-                  <InfoTooltip status={isInfoTooltipOpen} onClose={closeInfoTooltip} />
+                  <InfoTooltip status={isInfoTooltipOpen} onClose={handleClosePopup} />
                 </CurrentUserContext.Provider>
               )
       }

@@ -4,12 +4,12 @@ export default function FilterCheckbox({ shortMovies, handleShortMoviesCheck }) 
   return (
     <label className="filter">
         <input
-          className="filter__checkbox"
           type="checkbox"
+          className="filter__checkbox"
           onChange={handleShortMoviesCheck}
           defaultChecked={shortMovies ? true : false}
         />
-        <span className="filter__tumbler"></span>
+        <span className="filter__btn"></span>
         <span className="filter__text">Короткометражки</span>
     </label>
   );

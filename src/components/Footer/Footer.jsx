@@ -1,27 +1,31 @@
 import './Footer.css';
 
-export default function Footer() {
+import { SOCIALS } from '../../utils/constants';
+
+const {vk, gh, yp} = SOCIALS;
+
+function Footer() {
   return (
     <footer className="footer">
-      <div className="footer__container">
+      <div className="footer__block">
         <h2 className="footer__title">
           Учебный проект Яндекс.Практикум х BeatFilm.
         </h2>
         <div className="footer__nav">
           <p className="footer__copyright">&copy;{new Date().getFullYear()}</p>
-          <ul className="footer__links-list">
+          <ul className="footer__links">
             <li>
-              <a href="https://practicum.yandex.ru/" target="_blank" rel="noreferrer" className="footer__link">
+              <a href={yp} target="_blank" rel="noreferrer" className="footer__link">
                 Яндекс.Практикум
               </a>
             </li>
             <li>
-              <a href="https://github.com/Evgen4ik94" target="_blank" rel="noreferrer" className="footer__link">
+              <a href={gh} target="_blank" rel="noreferrer" className="footer__link">
                 Github
               </a>
             </li>
             <li>
-              <a href="https://vk.com/miliakov" target="_blank" rel="noreferrer" className="footer__link">
+              <a href={vk} target="_blank" rel="noreferrer" className="footer__link">
                 ВКонтакте
               </a>
             </li>
@@ -31,3 +35,5 @@ export default function Footer() {
     </footer>
   );
 }
+
+export default Footer;

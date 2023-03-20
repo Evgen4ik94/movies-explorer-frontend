@@ -17,7 +17,10 @@ class Api {
     return fetch(`${this._apiUrl}/signin`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ email, password }),
+      body: JSON.stringify({ 
+        email, 
+        password 
+      }),
     })
     .then(res => this._getResponseData(res));
   }
@@ -54,7 +57,10 @@ class Api {
         authorization: `Bearer ${localStorage.getItem('jwt')}`,
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ name, email }),
+      body: JSON.stringify({ 
+        name, 
+        email 
+      }),
     })
     .then(res => this._getResponseData(res));
   }

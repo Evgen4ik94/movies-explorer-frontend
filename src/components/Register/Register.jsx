@@ -6,18 +6,19 @@ import { useEffect } from 'react';
 import HeaderLogo from '../../images/header_logo.svg';
 import useValidationForm from '../../hooks/useValidationForm.jsx';
 
-function Register({ handleRegister }) {
+function Register({ handleUserReg }) {
   const { values, errors, isValid, handleChangeForm, resetFormInputs } = useValidationForm();
+
+  // Очистка полей формы
+  useEffect(() => {
+    resetFormInputs();
+  }, [resetFormInputs]);
 
   //Ручной сабмит формы
   function handleFormSubmit(evt) {
     evt.preventDefault();
-    handleRegister(values);
+    handleUserReg(values);
   }
-
-  useEffect(() => {
-    resetFormInputs();
-  }, [resetFormInputs]);
 
   return (
 
@@ -93,6 +94,7 @@ function Register({ handleRegister }) {
             Войти
           </Link>
         </span>
+        
       </form>
     </main>
   )

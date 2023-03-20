@@ -2,12 +2,14 @@ import './Login.css';
 
 import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
+
+import { PHRASES } from '../../utils/constants';
 import HeaderLogo from '../../images/header_logo.svg';
 import useValidationForm from '../../hooks/useValidationForm.jsx';
 
 function Login({ handleUserAuth }) {
   const { values, handleChangeForm, resetFormInputs, errors, isValid } = useValidationForm();
-
+  const {sayhi} = PHRASES;
   //Ручной сабмит формы
   function handleFormSubmit(evt) {
     evt.preventDefault(values);
@@ -25,7 +27,7 @@ function Login({ handleUserAuth }) {
         <Link to="/" className="login__link_block">
           <img src={HeaderLogo} alt="Логотип" className="login__link_logo" />
         </Link>
-        <h1 className="login__greeting">Рады видеть!</h1>
+        <h1 className="login__greeting">{sayhi}</h1>
         <div className="login__input-list">
           <label className="login__input">
             <span className="login__input-text">E-mail</span>
