@@ -63,11 +63,7 @@ export default function App() {
           }
         })
         .catch(err =>
-          setIsInfoTooltipOpen({
-            isOpen: true,
-            successful: false,
-            text: err,
-          })
+          errorPopup(err)
         )
         .finally(() => {
           setIsLoaderOn(false); //Выкл прелоадер после загрузки данных
@@ -91,11 +87,7 @@ export default function App() {
           history.push(path);
         })
         .catch(err =>
-          setIsInfoTooltipOpen({
-            isOpen: true,
-            successful: false,
-            text: err,
-          })
+          errorPopup(err)
         );
     }
     // eslint-disable-next-line
@@ -111,11 +103,7 @@ export default function App() {
         .getUserData()
         .then(res => setCurrentUser(res))
         .catch(err =>
-            setIsInfoTooltipOpen({
-              isOpen: true,
-              successful: false,
-              text: err,
-            })
+          errorPopup(err)
         )
         .finally(() =>
           setIsLoaderOn(false)
@@ -320,7 +308,7 @@ export default function App() {
                       component={Movies}
                       authorize={authorize}
                       setIsLoaderOn={setIsLoaderOn}
-                      setIsInfoTooltipOpen={setIsInfoTooltipOpen}
+                      errorPopup={errorPopup}
                       addedMoviesList={addedMoviesList}
                       onAddClick={handleAddMovieCard}
                       onRemoveClick={handleRemoveMovieCard}
@@ -329,7 +317,7 @@ export default function App() {
                       path='/saved-movies'
                       component={SavedMovies}
                       authorize={authorize}
-                      setIsInfoTooltipOpen={setIsInfoTooltipOpen}
+                      errorPopup={errorPopup}
                       addedMoviesList={addedMoviesList}
                       onRemoveClick={handleRemoveMovieCard}
                     />

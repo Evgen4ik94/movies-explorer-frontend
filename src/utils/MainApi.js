@@ -114,7 +114,7 @@ class Api {
 
 }
 
-// Экземпляр класса
+// Экземпляр класса основного Апи
 const MainApi = new Api({
   apiUrl: API_URL,
 });

@@ -8,7 +8,7 @@ import SearchForm from '../SearchForm/SearchForm.jsx';
 import MoviesCardList from '../MoviesCardList/MoviesCardList.jsx';
 import CurrentUserContext from '../../contexts/CurrentUserContext.jsx';
 
-function SavedMovies({ onRemoveClick, addedMoviesList, setIsInfoTooltipOpen }) {
+function SavedMovies({ onRemoveClick, addedMoviesList, errorPopup }) {
   const currentUser = useContext(CurrentUserContext); // Подключаем контекст
 
   const [shortMoviesCheck, setShortMoviesCheck] = useState(false); // Стейт чекбокса короткометражек
@@ -42,11 +42,7 @@ function SavedMovies({ onRemoveClick, addedMoviesList, setIsInfoTooltipOpen }) {
     // Если список сохраненных фильмов пуст - выдаем попап Not Found
     if (movies.length === 0) {
       setNotFound(true);
-      setIsInfoTooltipOpen({
-        isOpen: true,
-        successful: false,
-        text: notfound,
-      });
+      errorPopup(notfound);
     } 
     else {
       setNotFound(false);

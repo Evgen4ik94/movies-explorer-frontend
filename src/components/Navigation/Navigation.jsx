@@ -15,7 +15,7 @@ function Navigation({ authorize, isBurgerMenuOpened, onClickBurgerMenu }) {
     <>
       {!authorize ? (
         <nav className="navigation">
-              <ul className="navigation__list">
+              <ul className="navigation__list navigation__list_landing">
                 <li className="navigation__list_item">
                   <Link 
                     to="/signup" 

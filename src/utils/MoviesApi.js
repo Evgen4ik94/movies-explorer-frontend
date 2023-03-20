@@ -21,6 +21,7 @@ class MoviesApi {
   }
 }
 
+// Экземпляр класса Апи beatfilm
 const moviesApi = new MoviesApi({
     apiUrl: BEATFILM_URL,
 });

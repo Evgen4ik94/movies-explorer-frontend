@@ -9,7 +9,7 @@ import moviesApi from '../../utils/MoviesApi.js';
 import CurrentUserContext from '../../contexts/CurrentUserContext.jsx';
 import { PHRASES } from '../../utils/constants';
 
-function Movies({setIsLoaderOn, setIsInfoTooltipOpen, addedMoviesList,onRemoveClick, onAddClick}) {
+function Movies({setIsLoaderOn, errorPopup, addedMoviesList,onRemoveClick, onAddClick}) {
   
   const currentUser = useContext(CurrentUserContext); // Подключаем контекст
 
@@ -31,8 +31,9 @@ function Movies({setIsLoaderOn, setIsInfoTooltipOpen, addedMoviesList,onRemoveCl
   // Отображение фильмов из хранилища
   useEffect(() => {
       if (localStorage.getItem(`${currentUser.email} - movies`)) {
-      const moviesList = JSON.parse(localStorage.getItem(`${currentUser.email} - movies`)
+        const moviesList = JSON.parse(localStorage.getItem(`${currentUser.email} - movies`)
       );
+
       setQueryMovies(moviesList);
 
       if (
@@ -45,20 +46,18 @@ function Movies({setIsLoaderOn, setIsInfoTooltipOpen, addedMoviesList,onRemoveCl
     }
   }, [currentUser]);
 
-
   // Поиск фильмов по базе
   function handleSetMoviesList(moviesList, userQuery, shortMoviesCheckbox) {
     const movies = filterMoviesList(moviesList, userQuery, shortMoviesCheckbox);
+
     if (movies.length === 0) {
-      setIsInfoTooltipOpen({
-        isOpen: true,
-        successful: false,
-        text: notfound,
-      });
+      errorPopup(notfound);
       setNotFound(true);
-    } else {
+    } 
+    else {
       setNotFound(false);
     }
+
     setQueryMovies(movies);
     setFilteredMoviesList(!shortMoviesCheckbox ? movies : sortShortMovies(movies));
     localStorage.setItem(`${currentUser.email} - movies`, JSON.stringify(movies));
@@ -83,16 +82,13 @@ function Movies({setIsLoaderOn, setIsInfoTooltipOpen, addedMoviesList,onRemoveCl
             );
           })
           .catch(() =>
-            setIsInfoTooltipOpen({
-              isOpen: true,
-              successful: false,
-              text: server_error,
-            })
+            errorPopup(server_error)
           )
           .finally(() => setIsLoaderOn(false)); //Выкл прелоадер
-        } else {
-                handleSetMoviesList(isAllMoviesList, inputValue, shortMoviesCheck);
-      }
+        } 
+        else {
+          handleSetMoviesList(isAllMoviesList, inputValue, shortMoviesCheck);
+        }
     }
 
   // Установка состояния чекбокса короткометражек
@@ -108,11 +104,13 @@ function Movies({setIsLoaderOn, setIsInfoTooltipOpen, addedMoviesList,onRemoveCl
 
   return (
     <main className="movies">
+
       <SearchForm
         handleSearchFormSubmit={handleSearchFormSubmit}
         handleShortMoviesCheck={handleShortMoviesCheck}
         shortMoviesCheck={shortMoviesCheck}
       />
+      
       {!NotFound && (
         <MoviesCardList
           moviesList={filteredMoviesList}
@@ -121,6 +119,7 @@ function Movies({setIsLoaderOn, setIsInfoTooltipOpen, addedMoviesList,onRemoveCl
           onRemoveClick={onRemoveClick}
         />
       )}
+
     </main>
   );
 }
