@@ -36,8 +36,12 @@
     transition: all 0.3s ease;
   }
 
-  .movies-list__Btn_show-more:hover {
+  .movies-list__btn_show-more:hover {
     opacity: .8;
+  }
+
+  .movies-list__btn_hide {
+    display: none;
   }
 
   @media screen and (max-width: 1280px) {

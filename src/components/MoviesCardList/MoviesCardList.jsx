@@ -14,7 +14,7 @@ function MoviesCardList({ moviesList, addedMoviesList, onAddClick, onRemoveClick
   const widthScreen = useWidthScreen();
 
   const { desktop, tablet, mobile } = GADJETS_WIDTH;
-
+  const [isHideBtn, setIsHideBtn] = useState(false);
   const [isMounted, setIsMounted] = useState(true);
   const [renderMoviesList, setRenderMoviesList] = useState([]);
   const [showedCards, setShowedCards] = useState({ total: 12, more: 3 });
@@ -56,6 +56,11 @@ function MoviesCardList({ moviesList, addedMoviesList, onAddClick, onRemoveClick
     }
   }
 
+  // Показать/скрыть кнопку "Ещё"
+  useEffect(() => {
+    return moviesList.length === renderMoviesList.length ? setIsHideBtn(true) : setIsHideBtn(false);
+  })
+
   return (
     <>
       <ul className="movies-list">
@@ -71,7 +76,7 @@ function MoviesCardList({ moviesList, addedMoviesList, onAddClick, onRemoveClick
           }
       </ul>
       {location.pathname === "/movies" && (
-        <button type='button' className="movies-list__btn_show-more" onClick={handleClickShowMore}>Ещё</button>
+        <button type='button' className={`movies-list__btn_${isHideBtn ? 'hide' : 'show-more'}`} onClick={handleClickShowMore}>Ещё</button>
       )}
     </>
   )
