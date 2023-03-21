@@ -13,7 +13,7 @@ function SearchForm({ handleSearchFormSubmit, handleShortMoviesCheck, shortMovie
   const {search_error} = PHRASES;
   const currentUser = useContext(CurrentUserContext); // Подключаем контекст
   const [errorRes, setErrorRes] = useState('');
-  const { values, handleChangeForm, isValid, setIsValid, resetFormInputs } = useValidationForm();
+  const { values, handleChangeForm, isValid, setIsValid } = useValidationForm();
 
 // Стираем сообщение об ошибке валидации
 useEffect(() => {
@@ -34,11 +34,6 @@ useEffect(() => {
     evt.preventDefault();
     return isValid ? handleSearchFormSubmit(values.search) : setErrorRes(search_error);
   };
-
-// Сброс полей формы
-useEffect(() => {
-  resetFormInputs();
-}, [resetFormInputs]);
 
   return (
 
