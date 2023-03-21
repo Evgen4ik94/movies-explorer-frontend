@@ -201,6 +201,12 @@
     margin: 220px 0 0;
     display: flex;
   }
+  .navigation__link {
+    margin-left: 0;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 1.22;
+  }
 }
 
 @media screen and (max-width: 520px) {

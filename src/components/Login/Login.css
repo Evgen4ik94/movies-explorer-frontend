@@ -25,7 +25,7 @@
   .login__link {
     max-width: 38px;
     transition: all 0.3s ease;
-    color: #4285f4;
+    color: #2BE080;
     text-decoration: none;
     line-height: 0;
   }
@@ -121,7 +121,7 @@
     padding: 14px 0;
     margin-top: auto;
     border-style: none;
-    background-color: #4285f4;
+    background-color: #2BE080;
     border-radius: 3px;
     color: #fff;
     font-size: 14px;

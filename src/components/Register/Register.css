@@ -24,7 +24,7 @@
   .register__link {
     max-width: 38px;
     transition: all 0.3s ease;
-    color: #4285f4;
+    color: #2BE080;
     text-decoration: none;
     line-height: 0;
   }
@@ -56,10 +56,6 @@
     flex-direction: column;
     width: 100%;
     gap: 30px;
-  }
-
-  .register__input-placeholder {
-
   }
 
   .register__input-text {
@@ -117,7 +113,7 @@
   .register__btn_submit {
     margin-top: auto;
     border-style: none;
-    background-color: #4285f4;
+    background-color: #2BE080;
     border-radius: 3px;
     color: #fff;
     font-size: 14px;
