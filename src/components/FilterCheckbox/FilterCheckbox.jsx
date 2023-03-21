@@ -2,7 +2,7 @@ import './FilterCheckbox.css';
 
 export default function FilterCheckbox({ shortMovies, handleShortMoviesCheck }) {
   return (
-    <label className="filter">
+    <label className="filter" title='Показать короткометражки'>
         <input
           type="checkbox"
           className="filter__checkbox"

@@ -10,10 +10,11 @@ import useValidationForm from "../../hooks/useValidationForm";
 
 function SearchForm({ handleSearchFormSubmit, handleShortMoviesCheck, shortMoviesList }) {
   const location = useLocation();
-  const {search_error} = PHRASES;
   const currentUser = useContext(CurrentUserContext); // Подключаем контекст
-  const [errorRes, setErrorRes] = useState('');
+
+  const {search_error} = PHRASES;
   const { values, handleChangeForm, isValid, setIsValid } = useValidationForm();
+  const [errorRes, setErrorRes] = useState('');
 
 // Стираем сообщение об ошибке валидации
 useEffect(() => {
@@ -58,7 +59,7 @@ useEffect(() => {
         </div>
         <span className="search__input_error">{errorRes}</span>
 
-        <button className="search__btn" type="submit"></button>
+        <button type="submit" title='Найти фильмы' className="search__btn" ></button>
         <h2 className="vertical-line"></h2>
       </form>
       <FilterCheckbox

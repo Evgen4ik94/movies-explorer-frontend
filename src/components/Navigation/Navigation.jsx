@@ -6,7 +6,7 @@ import Hamburger from '../Hamburger/Hamburger.jsx';
 function Navigation({ authorize, isBurgerMenuOpened, onClickBurgerMenu }) {
   const activeClassName = `navigation__link_active_${!isBurgerMenuOpened ? 'desktop' : 'mobile'}`
 
-  // Закрытие бургерного меню кликом на оверлей
+  // Закрытие бургерного меню кликом на оверлей (Всплытие)
   function handleCloseByOverlay(evt) {
     evt.stopPropagation();
   }
@@ -35,10 +35,14 @@ function Navigation({ authorize, isBurgerMenuOpened, onClickBurgerMenu }) {
               </ul>
         </nav>
       ) : (
-        <nav className={`navigation navigation_status_${!isBurgerMenuOpened ? 'closed' : 'opened'}`} onClick={isBurgerMenuOpened ? onClickBurgerMenu : undefined}>
+        <nav 
+          className={`navigation navigation_status_${!isBurgerMenuOpened ? 'closed' : 'opened'}`} 
+          onClick={isBurgerMenuOpened ? onClickBurgerMenu : undefined}
+        >
           <ul
             className={ `navigation__list navigation__list_auth navigation__list_status_${!isBurgerMenuOpened ? 'closed' : 'opened'}` }
-            onClick={handleCloseByOverlay}>
+            onClick={handleCloseByOverlay}
+          >
               {isBurgerMenuOpened && (
                 <li className="navigation__list_item navigation__list_item_main">
                   <NavLink 

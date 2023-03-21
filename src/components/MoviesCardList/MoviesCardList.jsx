@@ -44,6 +44,11 @@ function MoviesCardList({ moviesList, addedMoviesList, onAddClick, onRemoveClick
     }
   }, [moviesList, showedCards.total]);
 
+  // Показать/скрыть кнопку "Ещё"
+  useEffect(() => {
+    return moviesList.length === renderMoviesList.length ? setIsHideBtn(true) : setIsHideBtn(false);
+  })
+
   // увеличение кол-ва отображаемых фильмов по клику на кнопку "Ещё"
   function handleClickShowMore() {
     const start = renderMoviesList.length;
@@ -56,27 +61,29 @@ function MoviesCardList({ moviesList, addedMoviesList, onAddClick, onRemoveClick
     }
   }
 
-  // Показать/скрыть кнопку "Ещё"
-  useEffect(() => {
-    return moviesList.length === renderMoviesList.length ? setIsHideBtn(true) : setIsHideBtn(false);
-  })
-
   return (
     <>
       <ul className="movies-list">
           { renderMoviesList.map(movie => (
-            <MoviesCard
-              key={movie.id || movie._id}
-              movie={movie}
-              added={getAddedMoviesCards(addedMoviesList, movie)}
-              onAddClick={onAddClick}
-              onRemoveClick={onRemoveClick}
-            />
+              <MoviesCard
+                key={movie.id || movie._id}
+                movie={movie}
+                added={getAddedMoviesCards(addedMoviesList, movie)}
+                onAddClick={onAddClick}
+                onRemoveClick={onRemoveClick}
+              />
             ))
           }
       </ul>
       {location.pathname === "/movies" && (
-        <button type='button' className={`movies-list__btn_${isHideBtn ? 'hide' : 'show-more'}`} onClick={handleClickShowMore}>Ещё</button>
+        <button 
+          type='button' 
+          title='Загрузить больше фильмов'
+          className={`movies-list__btn_${isHideBtn ? 'hide' : 'show-more'}`} 
+          onClick={handleClickShowMore}
+        >
+          Ещё
+        </button>
       )}
     </>
   )
