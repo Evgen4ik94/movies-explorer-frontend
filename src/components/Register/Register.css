@@ -21,6 +21,25 @@
     position: relative;
   }
 
+  .register__link_block {
+    display: flex;
+    text-decoration: none;
+  }
+
+  .register__link_main {
+    margin: auto 10px;
+    color: #2BE080;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 1.2;
+    opacity: 0;
+  }
+
+  .register__link_block:hover  .register__link_main {
+    opacity: 1;
+    transition: all 0.5s ease-out;
+  }
+
   .register__link {
     max-width: 38px;
     transition: all 0.3s ease;
@@ -33,13 +52,13 @@
     opacity: 0.7;
   }
 
-  .register__logo {
+  .register__link_logo {
     width: 38px;
     height: 38px;
     transition: all 0.3s ease;
   }
 
-  .register__logo:hover {
+  .register__link_logo:hover {
     transform: rotate(180deg);
     scale: 1.2;
   }
@@ -162,6 +181,12 @@
       gap: 50px;
       max-width: 260px;
       flex: 1;
+    }
+
+    .register__link_block {
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
     }
 
     .register__input-list {

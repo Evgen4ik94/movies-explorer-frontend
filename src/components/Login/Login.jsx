@@ -26,6 +26,7 @@ function Login({ handleUserAuth }) {
       <form className="login__form" name="login" onSubmit={handleFormSubmit} noValidate>
         <Link to="/" className="login__link_block">
           <img src={HeaderLogo} alt="Логотип" className="login__link_logo" />
+          <span className='login__link_main'>На главную</span>
         </Link>
         <h1 className="login__greeting">{sayhi}</h1>
         <div className="login__input-list">

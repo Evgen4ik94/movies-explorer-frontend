@@ -29,8 +29,9 @@ function Register({ handleUserReg }) {
         onSubmit={handleFormSubmit}
         noValidate
       >
-        <Link to="/" className="register__link_logo">
-          <img src={HeaderLogo} alt="Логотип" className="register__logo" />
+        <Link to="/" className="register__link_block">
+          <img src={HeaderLogo} alt="Логотип" className="register__link_logo" />
+          <span className='register__link_main'>На главную</span>
         </Link>
         <h1 className="register__greeting">Добро пожаловать!</h1>
         <div className="register__input-list">
