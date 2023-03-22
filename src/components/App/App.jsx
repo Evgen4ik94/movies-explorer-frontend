@@ -21,7 +21,7 @@ import InfoTooltip from '../InfoTooltip/InfoTooltip.jsx';
 import Preloader from '../Preloader/Preloader.jsx';
 
 
-export default function App() {
+function App() {
 
   const [authorize, setAuthorize] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -131,6 +131,7 @@ export default function App() {
   // Закрытие бургерного меню кликом на Esc
   usePressEsc(onClickBurgerMenu, isBurgerMenuOpened);
 
+  // Открытие fail-попапа 
   function errorPopup(text) {
     setIsInfoTooltipOpen({
       isOpen: true,
@@ -139,6 +140,7 @@ export default function App() {
     })
   }
 
+  // Открытие success-попапа
   function successPopupOpen(text) {
     setIsInfoTooltipOpen({
       isOpen: true,
@@ -250,18 +252,14 @@ export default function App() {
 
   // Функция удаления фильма из списка сохраненных
   function handleRemoveMovieCard(movie) {
-    const addedMovie = addedMoviesList.find(
+    const addedMovie = addedMoviesList.find(  
       (item) => item.movieId === movie.id || item.movieId === movie.movieId
     );
     MainApi
       .removeMovieCard(addedMovie._id)
       .then(() => {
         const newMoviesList = addedMoviesList.filter(m => {
-          if (movie.id === m.movieId || movie.movieId === m.movieId) {
-            return false;
-          } else {
-            return true;
-          }
+          return (movie.id === m.movieId || movie.movieId === m.movieId) ? false : true 
         });
         setAddedMoviesList(newMoviesList);
       })
@@ -274,7 +272,7 @@ export default function App() {
   return (
 
     <div className="app">
-      {!loading ? (
+      {!loading ? ( // Если данные не загрузились, вкл прелоадер
         <Preloader isOpen={isLoaderOn} />
           ) : (
                 <CurrentUserContext.Provider value={currentUser}>
@@ -287,6 +285,7 @@ export default function App() {
                   </Route>
                   <Switch>
                     <Route exact path='/'>
+                      <Preloader isOpen={isLoaderOn} />
                       <Main />
                     </Route>
                     <Route exact path='/signup'>
@@ -335,7 +334,6 @@ export default function App() {
                   <Route exact path={footerEndpoints}>
                     <Footer />
                   </Route>
-                  <Preloader isOpen={isLoaderOn} />
                   <InfoTooltip status={isInfoTooltipOpen} onClose={handleClosePopup} />
                 </CurrentUserContext.Provider>
               )
@@ -343,3 +341,5 @@ export default function App() {
     </div>
   )
 }
+
+export default App;

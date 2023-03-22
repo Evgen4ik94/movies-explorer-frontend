@@ -15,6 +15,7 @@
     box-sizing: border-box;
     align-items: center;
     flex-direction: column;
+    background-color: #F5F5F5;
   }
 
   .techs__heading {

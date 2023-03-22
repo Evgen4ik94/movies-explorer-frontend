@@ -22,11 +22,12 @@ function MoviesCard({ movie, added, onAddClick, onRemoveClick }) {
     <li className="movie-card">
       <article className="movie-card__item">
         
-        <div className="movie-card__description">
+        <div className="movie-card__description" title={`\n Режиссёр: ${movie.director},\n ${movie.country}, ${movie.year}г.`}>
           <div className='movie-card__header'>
             <h2 className="movie-card__title">{movie.nameRU}</h2>
             <span className="movie-card__time">{convertMovieDuration(movie.duration)}</span>
           </div>
+
           {location.pathname === '/movies' && (
             <button 
               type="button" 
@@ -52,7 +53,7 @@ function MoviesCard({ movie, added, onAddClick, onRemoveClick }) {
           <img 
             src={movie.image}
             alt={movie.nameRU}
-            title={`Описание: ${movie.description} \n\nСнято: ${movie.country} ${movie.year}г.`}
+            title={`Описание: ${movie.description}`}
             className="movie-card__pic" />
         </a>
       </article>

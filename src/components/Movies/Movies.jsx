@@ -2,12 +2,12 @@ import './Movies.css';
 
 import { useState, useContext, useEffect } from 'react';
 import {convertMovie, filterMoviesList, sortShortMovies} from '../../utils/utils.js';
+import { PHRASES } from '../../utils/constants';
 
 import MoviesCardList from '../MoviesCardList/MoviesCardList.jsx';
 import SearchForm from '../SearchForm/SearchForm.jsx';
 import moviesApi from '../../utils/MoviesApi.js';
 import CurrentUserContext from '../../contexts/CurrentUserContext.jsx';
-import { PHRASES } from '../../utils/constants';
 
 function Movies({setIsLoaderOn, errorPopup, addedMoviesList,onRemoveClick, onAddClick}) {
   
@@ -19,14 +19,14 @@ function Movies({setIsLoaderOn, errorPopup, addedMoviesList,onRemoveClick, onAdd
   const [shortMoviesCheck, setShortMoviesCheck] = useState(false); // Стейт чекбокса короткометражек
   const [filteredMoviesList, setFilteredMoviesList] = useState([]); // Фильмы, отображаемые по запросу и отфильтрованные чекбоксом
 
-  const [NotFound, setNotFound] = useState(false); // Если фильмы по запросу не найдены
+  const [NotFound, setNotFound] = useState(false); // Если фильмы по запросу не найдены, стейт в состоянии true
   const {notfound, server_error} = PHRASES;
-
+  
+  /*----- ХУКИ ---*/
   // Проверка состояния чекбокса в хранилище
   useEffect(() => {
     (localStorage.getItem(`${currentUser.email} - shortMovies`) === 'true') ? setShortMoviesCheck(true) : setShortMoviesCheck(false)
-    }
-    , [currentUser]);
+  }, [currentUser]);
 
   // Отображение фильмов из хранилища
   useEffect(() => {
@@ -36,16 +36,20 @@ function Movies({setIsLoaderOn, errorPopup, addedMoviesList,onRemoveClick, onAdd
 
       setQueryMovies(moviesList);
 
-      if (
-        localStorage.getItem(`${currentUser.email} - shortMovies`) === 'true'
-      ) {
-        setFilteredMoviesList(sortShortMovies(moviesList));
-      } else {
-        setFilteredMoviesList(moviesList);
-      }
+      if (localStorage.getItem(`${currentUser.email} - shortMovies`) === 'true') 
+        {
+          setFilteredMoviesList(sortShortMovies(moviesList));
+        } 
+      else 
+        {
+          setFilteredMoviesList(moviesList);
+        }
     }
   }, [currentUser]);
 
+  /*----- ХУКИ END ---*/
+
+  /*----- ФУНКЦИИ -----*/
   // Поиск фильмов по базе
   function handleSetMoviesList(moviesList, userQuery, shortMoviesCheckbox) {
     const movies = filterMoviesList(moviesList, userQuery, shortMoviesCheckbox);
@@ -101,6 +105,7 @@ function Movies({setIsLoaderOn, errorPopup, addedMoviesList,onRemoveClick, onAdd
     }
     localStorage.setItem(`${currentUser.email} - shortMovies`, !shortMoviesCheck);
   }
+  /*----- ФУНКЦИИ END-----*/
 
   return (
     <main className="movies">

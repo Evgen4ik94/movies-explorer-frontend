@@ -17,7 +17,7 @@ function SavedMovies({ onRemoveClick, addedMoviesList, errorPopup }) {
   const [NotFound, setNotFound] = useState(false); // Если фильмы по запросу не найдены
   const {notfound} = PHRASES;
 
-  
+  /*----- ХУКИ ---*/
   // Локальное состояние чекбокса
   useEffect(() => {
     if (localStorage.getItem(`${currentUser.email} - shortSavedMovies`) === 'true') {
@@ -36,6 +36,9 @@ function SavedMovies({ onRemoveClick, addedMoviesList, errorPopup }) {
     addedMoviesList.length === 0 ? setNotFound(true) : setNotFound(false);
   }, [addedMoviesList]);
 
+  /*----- ХУКИ END ---*/
+
+  /*----- ФУНКЦИИ -----*/
   // Отображение фильмов по запросу в поисковой строке
   function handleSearchFormSubmit(userReq) {
     const movies = filterMoviesList(addedMoviesList, userReq, shortMoviesCheck);
@@ -66,6 +69,7 @@ function SavedMovies({ onRemoveClick, addedMoviesList, errorPopup }) {
       sortShortMovies(filteredMoviesList).length === 0 ? setNotFound(true) : setNotFound(false);
     }
   }
+  /*----- ФУНКЦИИ END-----*/
 
   return (
 
