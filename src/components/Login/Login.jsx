@@ -1,6 +1,6 @@
 import './Login.css';
 
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
 import { PHRASES } from '../../utils/constants';
@@ -19,6 +19,18 @@ function Login({ handleUserAuth }) {
   useEffect(() => {
     resetFormInputs();
   }, [resetFormInputs]);
+
+  const [showPassword, setShowPassword] = useState('password');
+
+
+  function handleShowPassword() {
+    console.log('Done!')
+    if (showPassword === 'text') {
+      setShowPassword('password')
+    } else {
+      setShowPassword('text')
+    }
+  }
 
   return (
 
@@ -46,13 +58,14 @@ function Login({ handleUserAuth }) {
             <span className="login__input-text">Пароль</span>
             <input
               name="password"
-              type="password"
+              type={showPassword}
               className={`login__input-placeholder ${errors.password && 'login__input_error'}`}
               onChange={handleChangeForm}
               value={values.password || ''}
               required
             />
-            <span className="login__input-error">{errors.password || ''}</span>
+            <label><input type="checkbox" className="login__password-checkbox" onClick={handleShowPassword} /> Показать пароль</label>
+            <span className="login__input-error" >{errors.password || ''}</span>
           </label>
         </div>
 

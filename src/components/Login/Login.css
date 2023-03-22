@@ -135,6 +135,10 @@
     left: 0;
   }
 
+  .login__password-checkbox {
+    margin-top: 15px;
+  }
+
   .login__btn_submit {
     width: 100%;
     padding: 14px 0;
