@@ -1,29 +1,46 @@
 import './Login.css';
-import { useEffect } from 'react';
+
+import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+
+import { PHRASES } from '../../utils/constants';
 import HeaderLogo from '../../images/header_logo.svg';
 import useValidationForm from '../../hooks/useValidationForm.jsx';
 
-export default function Login() {
-  const { values, handleChangeForm, resetForm, errors, isValid } = useValidationForm();
-
+function Login({ handleUserAuth }) {
+  const { values, handleChangeForm, resetFormInputs, errors, isValid } = useValidationForm();
+  const {sayhi} = PHRASES;
   //Ручной сабмит формы
-  function handleFormSubmit(e) {
-    e.preventDefault();
+  function handleFormSubmit(evt) {
+    evt.preventDefault(values);
+    handleUserAuth(values);
   }
   // Сброс полей формы
   useEffect(() => {
-    resetForm();
-  }, [resetForm]);
+    resetFormInputs();
+  }, [resetFormInputs]);
+
+  const [showPassword, setShowPassword] = useState('password');
+
+
+  function handleShowPassword() {
+    console.log('Done!')
+    if (showPassword === 'text') {
+      setShowPassword('password')
+    } else {
+      setShowPassword('text')
+    }
+  }
 
   return (
 
     <main className="login">
-      <form className="login__form" name="login" noValidate onSubmit={handleFormSubmit}>
-        <Link to="/" className="login__link_logo">
-          <img src={HeaderLogo} alt="Логотип" className="login__logo" />
+      <form className="login__form" name="login" onSubmit={handleFormSubmit} noValidate>
+        <Link to="/" className="login__link_block">
+          <img src={HeaderLogo} alt="Логотип" className="login__link_logo" />
+          <span className='login__link_main'>На главную</span>
         </Link>
-        <h1 className="login__greeting">Рады видеть!</h1>
+        <h1 className="login__greeting">{sayhi}</h1>
         <div className="login__input-list">
           <label className="login__input">
             <span className="login__input-text">E-mail</span>
@@ -41,13 +58,14 @@ export default function Login() {
             <span className="login__input-text">Пароль</span>
             <input
               name="password"
-              type="password"
+              type={showPassword}
               className={`login__input-placeholder ${errors.password && 'login__input_error'}`}
               onChange={handleChangeForm}
               value={values.password || ''}
               required
             />
-            <span className="login__input-error">{errors.password || ''}</span>
+            <label><input type="checkbox" className="login__password-checkbox" onClick={handleShowPassword} /> Показать пароль</label>
+            <span className="login__input-error" >{errors.password || ''}</span>
           </label>
         </div>
 
@@ -69,3 +87,5 @@ export default function Login() {
     </main>
   )
 }
+
+export default Login;

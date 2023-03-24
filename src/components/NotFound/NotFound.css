@@ -29,7 +29,7 @@
   
   .not-found__btn {
     padding: 0;
-    color: #4285f4;
+    color: #2BE080;
     border: none;
     background-color: transparent;
     cursor: pointer;
@@ -45,12 +45,6 @@
   
   .not-found__btn:hover {
     opacity: .8;
-  }
-  
-  @media screen and (max-width: 800px) {
-    .not-found__btn {
-      bottom: 212px;
-    }
   }
   
   @media screen and (max-width: 450px) {

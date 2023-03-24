@@ -1,17 +1,19 @@
   .search {
     max-width: 1140px;
-    width: 89vw;
-    margin: 70px auto 80px;
+    width: 90vw;
+    margin: 70px auto 70px;
+    background: #f9f9f9;
     display: flex;
     flex-direction: row;
     border-radius: 9px;
   }
-  
+
   .search__form {
     display: flex;
     justify-content: center;
     background: #f9f9f9;
     border-radius: 9px 0 0 9px;
+    position: relative;
   }
 
   .search__input {
@@ -24,11 +26,21 @@
     line-height: 20px;
   }
 
+  .search__input_error {
+    position: absolute;
+    top: 60px;
+    left: 0;
+    font-weight: 400;
+    font-size: 11px;
+    line-height: 1.2;
+    color: #ee3465;
+  }
+
   .search__input:focus-visible {
     border-bottom: 1px solid #2BE080;
     transition: 0,5;
     outline: none;
-    transition: 0.55s ease-in-out;  
+    transition: 0.55s ease-in-out;
   }
 
   .search__input-placeholder:hover .search-icon  {
@@ -38,13 +50,13 @@
   .search__input::placeholder {
     color: #A0A0A0;
   }
-  
+
   .search__input-placeholder {
     display: inline-flex;
     padding: 10px;
   }
 
-  .search__button {
+  .search__btn {
     width: 34px;
     height: 34px;
     margin-right: 30px;
@@ -57,10 +69,10 @@
     transition: all 0.3s ease;
   }
 
-  .search__button:hover {
+  .search__btn:hover {
     opacity: 0.8;
   }
-  
+
   .search-icon {
     margin-right: 10px;
     background: url("../../images/search-icon.svg");
@@ -83,7 +95,7 @@
       width: 49vw;
     }
   }
-  
+
   @media screen and (max-width: 768px) {
     .search__form {
       width: 70vw;
@@ -91,7 +103,7 @@
     .search__input {
       width: 44vw;
     }
-    .search__button {
+    .search__btn {
       margin-right: 19px;
     }
   }
@@ -99,11 +111,17 @@
   @media screen and (max-width: 666px) {
     .search {
       flex-direction: column;
+      background: none;
     }
     .search__form {
       width: 92vw;
       border-radius: 9px;
     }
+
+    .search:last-child {
+      background: #fff;
+    }
+
     .search__input {
       width: 66vw
     }
@@ -111,17 +129,17 @@
         display: none;
     }
   }
-  
+
   @media screen and (max-width: 468px) {
-  
+
     .search__input {
       width: 55vw;
     }
-  
-    .search__button {
+
+    .search__btn {
       top: -10px;
     }
-  
+
     .search__form::before {
       content: none;
     }
@@ -137,4 +155,3 @@
         display: none;
     }
 }
-  

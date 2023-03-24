@@ -19,7 +19,7 @@ function NavTab() {
                         titleLink={titleLink.id1}
                         btnStyle={'NavTab__btn'}
                         textStyle ={'NavTab__btn-text'}
-                        navTabStyle={'NavTab__link'} 
+                        navTabStyle={'NavTab__link'}
                     />
                     <NavBtn 
                         to={"techs"}

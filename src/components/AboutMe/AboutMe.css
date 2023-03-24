@@ -29,15 +29,15 @@
     box-sizing: border-box;
   }
   
-  .student__bio-container {
+  .student__info-container {
     width: 100%;
     margin-top: 66px;
     display: flex;
-    justify-content: space-between;
     gap: 50px;
+    justify-content: space-between;
   }
   
-  .student__bio {
+  .student__info {
     max-width: 600px;
     display: flex;
     flex-direction: column;
@@ -73,7 +73,7 @@
     list-style: none;
   }
   
-  .student__social-link {
+  .student__social_link {
     color: #000;
     font-weight: 500;
     font-size: 14px;
@@ -82,12 +82,12 @@
     transition: all .3s ease;
   }
   
-  .student__social-link:hover {
+  .student__social_link:hover {
     opacity: .7;
     color: #3DDC84;
   }
   
-  .student__avatar {
+  .student__photo {
     width: 270px;
     object-fit: cover;
     border-radius: 10px;
@@ -99,7 +99,7 @@
       padding: 92px 50px;
     }
   
-    .student__bio {
+    .student__info {
       max-width: 384px;
     }
   
@@ -125,22 +125,22 @@
       margin-top: 87px;
     }
   
-    .student__avatar {
+    .student__photo {
       width: 255px;
     }
   }
   
   @media screen and (max-width: 666px) {
 
-    .student__bio-container {
+    .student__info-container {
+      margin-top: 60px;
       display: flex;
+      gap: 40px;
       flex-direction: column-reverse;
       align-items: center;
-      margin-top: 60px;
-      gap: 40px;
     }
   
-    .student__avatar {
+    .student__photo {
       width: 292px;
     }
   }
@@ -151,9 +151,9 @@
     }
   
     .student__title {
+      padding-bottom: 28px;
       font-size: 18px;
       line-height: 1.22;
-      padding-bottom: 28px;
     }
   
     .student__name {
@@ -162,9 +162,9 @@
     }
   
     .student__age {
+      margin-top: 20px;
       font-size: 11px;
       line-height: 1.45;
-      margin-top: 20px;
     }
   
     .student__text {

@@ -1,5 +1,9 @@
 import './Portfolio.css';
 
+import { PROJECTS } from '../../utils/constants';
+
+const { project1, project2, project3} = PROJECTS;
+
 function Portfolio() {
   return (
     <section className="portfolio">
@@ -8,8 +12,8 @@ function Portfolio() {
         <ul className="portfolio__projects">
           <li className="portfolio__project_item">
             <a
+              href={project1}
               className="portfolio__project_link"
-              href="https://github.com/Evgen4ik94/how-to-learn"
               target="_blank"
               rel="noreferrer"
             >
@@ -20,10 +24,10 @@ function Portfolio() {
           </li>
           <li className="portfolio__project_item">
             <a
-              href="https://github.com/Evgen4ik94/russian-travel"
+              href={project2}
+              className="portfolio__project_link"
               target="_blank"
               rel="noreferrer"
-              className="portfolio__project_link"
             >
               <p className='portfolio__project_title'>Адаптивный сайт</p>
               <span className='portfolio__project_arrow'>↗</span>
@@ -31,10 +35,10 @@ function Portfolio() {
           </li>
           <li className="portfolio__project_item">
             <a
-              href="https://github.com/Evgen4ik94/react-mesto-api-full"
+              href={project3}
+              className="portfolio__project_link"
               target="_blank"
               rel="noreferrer"
-              className="portfolio__project_link"
             >
               <p className='portfolio__project_title'>Одностраничное веб-приложение</p>
               <span className='portfolio__project_arrow'>↗</span>
